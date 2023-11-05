@@ -11,13 +11,13 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
-export default function SignUpScreen() {
+export default function SignUpScreen({ navigation }) {
 
     return (
        
 <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("/Users/oladipupoolasile/Desktop/BudgetBuy/assets/loginBackground.jpeg")}
+        source={require("../assets/loginBackground.jpeg")}
         style={{ width: "100%", height: "100%", position: "absolute" }}
       >
         <View style={styles.overlay}>
@@ -60,7 +60,7 @@ export default function SignUpScreen() {
             />
 
 
-            <TouchableOpacity style={styles.createAccountButton}>
+            <TouchableOpacity style={styles.createAccountButton} onPress={()=> navigation.push('Login')}>
               <Text style={styles.createAccountButtonText}>Create Account</Text>
             </TouchableOpacity>
 

@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   
   return (
     <SafeAreaView style={styles.container}>
@@ -43,7 +43,7 @@ export default function LoginScreen() {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity style={styles.loginButton} onPress={()=> navigation.push('SignUp')}>
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
 
