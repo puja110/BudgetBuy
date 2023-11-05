@@ -10,15 +10,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-
-
 export default function LoginScreen({ navigation }) {
   
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
         source={require("../assets/loginBackground.jpeg")}
-        style={{ width: "100%", height: "100%", position: "absolute" }}
+        style={styles.ImageBackground}
       >
         <View style={styles.overlay}>
           <View style={styles.inputContainer}>
@@ -43,63 +41,63 @@ export default function LoginScreen({ navigation }) {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton} onPress={()=> navigation.push('SignUp')}>
+            <TouchableOpacity style={styles.loginButton}>
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
 
             <View style={styles.noAccountView}>
               <Text> Don't have an account?</Text>
 
-              <TouchableOpacity >
+              <TouchableOpacity onPress={()=> navigation.push('SignUp')}>
                 <Text
-                  style={{ textDecorationLine: "underline", color: "#DEC109" }}
+                  style={styles.signupTexte}
                 >
                   {" "}
-                  Sing Up
+                  Sign Up
                 </Text>
               </TouchableOpacity>
             </View>
 
-            <View style={{ flexDirection: "row" }}>
-              <View style={{ paddingBottom: 15 }}>
-                <Text style={{ color: "gray" }}> __________________ </Text>
-              </View>
-              <Text style={{ color: "gray", fontSize: 20 }}> or </Text>
+            <View style={styles.orContainer}>
               <View>
-                <Text style={{ color: "gray" }}> __________________ </Text>
+                <Text style={styles.greyText}> __________________ </Text>
+              </View>
+              <Text style={styles.orText}> or </Text>
+              <View>
+                <Text style={styles.greyText}> __________________ </Text>
               </View>
             </View>
 
-            <Text style={{ color: "gray" }}>
+            <Text style={styles.greyText}>
               {" "}
               Login with the following options
             </Text>
 
-            <View style={{ flexDirection: "row", paddingTop: 20, justifyContent: 'space-between'}}>
+            <View style={styles.loginOptionsContainer}>
               <TouchableOpacity 
-              style={styles.iconButtons}
-              onPress={() => {}}>
+                style={styles.iconButtons}
+                onPress={() => {}}>
                 <Image
                   source={require("../assets/googleLogo.png")}
-                  style={{ width: 40, height: 40 }}
+                  style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
 
               <TouchableOpacity 
-              style={styles.iconButtons}
-              onPress={() => {}}>
+                style={styles.iconButtons}
+                onPress={() => {}}>
                 <Image
                   source={require("../assets/facebookLogo.png")}
-                  style={{ width: 40, height: 40 }}
+                  style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
-              style={styles.iconButtons}
-              onPress={() => {}}>
+                style={styles.iconButtons}
+                onPress={() => {}}>
                 <Image
                   source={require("../assets/appleLogo.png")}
-                  style={{ width: 40, height: 40 }}
+                  style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
             </View>
@@ -116,7 +114,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   container: {
     flex: 1,
     justifyContent: "center",
@@ -128,31 +125,36 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 2,
   },
-
+  ImageBackground: {
+    width: "100%", 
+    height: "100%", 
+    position: "absolute"
+  },
   loginText: {
     fontSize: 35,
     fontWeight: "bold",
   },
-
   loginContainer: {
-    marginBottom: 20,
+    marginBottom: 30,
+  },
+  signupTexte: {
+    textDecorationLine: "underline", 
+    color: "#DEC109"
   },
   input: {
-    width: 300,
+    width: '100%',
     height: 50,
     borderColor: "gray",
-    borderWidth: 1,
+    borderWidth: 0.5,
     marginBottom: 20,
     paddingHorizontal: 15,
     borderRadius: 20,
-    backgroundColor: "lightgray",
+    backgroundColor: "#ededed",
   },
-
   forgotPasswordContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
   },
-
   forgotPasswordText: {
     color: "#DEC109",
     textDecorationLine: "underline",
@@ -167,24 +169,42 @@ const styles = StyleSheet.create({
   loginButtonText: {
     color: "white",
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: "bold",
   },
-
+  greyText: {
+    color: "gray"
+  },
+  orContainer: {
+    flexDirection: "row", 
+    justifyContent: 'space-around', 
+    marginBottom: 30 
+  },
+  orText: {
+    color: "gray", 
+    fontSize: 20 
+  },
+  loginOptionsContainer: {
+    flexDirection: "row", 
+    paddingTop: 20, 
+    justifyContent: 'space-between'
+  },
+  loginOptionsImage: {
+    width: 40, 
+    height: 40 
+  },
   noAccountView: {
     flexDirection: "row",
     paddingTop: 10,
     justifyContent: "center",
-    paddingBottom: 10,
+    paddingBottom: 20,
   },
-
   iconButtons : {
     borderColor: 'DEDED9',
-    backgroundColor: '#DEDED9',
+    backgroundColor: "#ededed",
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 15,
     paddingVertical: 3
   }
-
 });
