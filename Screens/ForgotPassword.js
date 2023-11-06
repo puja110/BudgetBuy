@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
 
 export default function ForgotPassword() {
+  
+  const [hidePassword, setHidePassword] = useState(true);
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,23 +25,47 @@ export default function ForgotPassword() {
           <View style={styles.inputContainer}>
             <Text style={styles.forgotPasswordText}>Reset Password</Text>
             <Text style={styles.forgotPassworInputTextTitle}>New password</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="password"
-              secureTextEntry={true}
-              placeholder="Password"
-              placeholderTextColor="gray"
-              autoCorrect={false}
-            />
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.input}
+                keyboardType="password"
+                secureTextEntry={hidePassword}
+                placeholder="Password"
+                placeholderTextColor="gray"
+                autoCorrect={false}
+              />
+              <TouchableOpacity
+                style={styles.passwordIcon}
+                onPress={() => setHidePassword(!hidePassword)}
+                >
+                <Ionicons
+                  size={24}
+                  color='#389CD7'
+                  name={hidePassword ? 'eye' : 'eye-off'}
+                />
+              </TouchableOpacity>
+            </View>
             <Text style={styles.forgotPassworInputTextTitle}>Confirm new password</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="password"
-              secureTextEntry={true}
-              placeholder="Confirm password"
-              placeholderTextColor="gray"
-              autoCorrect={false}
-            />
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.input}
+                keyboardType="password"
+                secureTextEntry={hideConfirmPassword}
+                placeholder="Confirm password"
+                placeholderTextColor="gray"
+                autoCorrect={false}
+              />
+              <TouchableOpacity
+                style={styles.passwordIcon}
+                onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
+                >
+                <Ionicons
+                  size={24}
+                  color='#389CD7'
+                  name={hideConfirmPassword ? 'eye' : 'eye-off'}
+                />
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity style={styles.forgotPasswordButton}>
               <Text style={styles.forgotPasswordButtonText}>Submit</Text>
             </TouchableOpacity>
