@@ -57,8 +57,7 @@ export default function ForgotPassword({ navigation }) {
               />
               <TouchableOpacity
                 style={styles.passwordIcon}
-                onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
-                >
+                onPress={() => setHideConfirmPassword(!hideConfirmPassword)}>
                 <Ionicons
                   size={24}
                   color='gray'
@@ -66,7 +65,9 @@ export default function ForgotPassword({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.forgotPasswordButton} onPress={()=> navigation.push('Login')}>
+            <TouchableOpacity 
+              style={styles.forgotPasswordButton} 
+              onPress={()=> navigation.push('Login')}>
               <Text style={styles.forgotPasswordButtonText}>Submit</Text>
             </TouchableOpacity>
           </View>
