@@ -15,7 +15,7 @@ export default function LoginScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/loginBackground.jpeg")}
+        source={require("../assets/authenticationBackground.jpeg")}
         style={styles.imageBackground}
       >
         <View style={styles.overlay}>
@@ -36,12 +36,12 @@ export default function LoginScreen({ navigation }) {
             />
 
             <View style={styles.forgotPasswordContainer}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> navigation.push('ForgotPassword')}>
                 <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity style={styles.loginButton}> 
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
 
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   loginContainer: {
-    marginBottom: 30,
+    marginBottom: 10,
   },
   signupText: {
     textDecorationLine: "underline", 
@@ -146,7 +146,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderColor: "gray",
     borderWidth: 0.8,
-    marginBottom: 20,
+    marginTop: 16,
+    marginBottom: 10,
     paddingHorizontal: 15,
     borderRadius: 20,
     backgroundColor: "#ededed",
@@ -158,13 +159,13 @@ const styles = StyleSheet.create({
   forgotPasswordText: {
     color: "#DEC109",
     textDecorationLine: "underline",
-    paddingBottom: 20,
   },
   loginButton: {
     height: 50,
     backgroundColor: "#DEC109",
     padding: 10,
     borderRadius: 15,
+    marginTop: 20,
   },
   loginButtonText: {
     color: "white",
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   orContainer: {
     flexDirection: "row", 
     justifyContent: 'space-around', 
-    marginBottom: 30 
+    marginVertical: 35,
   },
   orText: {
     color: "gray", 
@@ -195,9 +196,8 @@ const styles = StyleSheet.create({
   },
   noAccountView: {
     flexDirection: "row",
-    paddingTop: 10,
+    paddingTop: 14,
     justifyContent: "center",
-    paddingBottom: 20,
   },
   iconButtons : {
     borderColor: 'DEDED9',
