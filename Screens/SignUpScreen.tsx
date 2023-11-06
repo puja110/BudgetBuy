@@ -17,7 +17,7 @@ export default function SignUpScreen() {
        
 <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("/Users/oladipupoolasile/Desktop/BudgetBuy/assets/loginBackground.jpeg")}
+        source={require("../assets/loginBackground.jpeg")}
         style={{ width: "100%", height: "100%", position: "absolute" }}
       >
         <View style={styles.overlay}>
