@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import {
   View,
   Text,
@@ -9,9 +9,12 @@ import {
   Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Ionicons from '@expo/vector-icons/Ionicons'
 
 export default function LoginScreen({ navigation }) {
   
+  const [hidePassword, setHidePassword] = useState(true);
+
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -29,11 +32,22 @@ export default function LoginScreen({ navigation }) {
               placeholder="Email"
               keyboardType="email-address"
             />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              secureTextEntry={true}
-            />
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry={hidePassword}
+              />
+              <TouchableOpacity
+                style={styles.passwordIcon}
+                onPress={() => setHidePassword(!hidePassword)}>
+                <Ionicons
+                  size={24}
+                  color='gray'
+                  name={hidePassword ? 'eye' : 'eye-off'}
+                />
+              </TouchableOpacity>
+            </View>
 
             <View style={styles.forgotPasswordContainer}>
               <TouchableOpacity onPress={()=> navigation.push('ForgotPassword')}>
@@ -145,7 +159,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     borderColor: "gray",
-    borderWidth: 0.8,
+    borderWidth: 0.5,
     marginTop: 16,
     marginBottom: 10,
     paddingHorizontal: 15,
@@ -191,8 +205,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   loginOptionsImage: {
-    width: 40, 
-    height: 40 
+    width: 35, 
+    height: 35,
   },
   noAccountView: {
     flexDirection: "row",
@@ -201,10 +215,18 @@ const styles = StyleSheet.create({
   },
   iconButtons : {
     borderColor: 'DEDED9',
-    backgroundColor: "#ededed",
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 3
+    backgroundColor: "#edebeb",
+    borderRadius: 15,
+    paddingHorizontal: 16,
+    paddingVertical: 6
+  },
+  inputTextContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  passwordIcon: {
+    position: 'absolute',
+    right: 10,
+    alignSelf: 'center',
   }
 });
