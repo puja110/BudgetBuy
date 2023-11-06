@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-export default function ForgotPassword() {
+export default function ForgotPassword({ navigation }) {
   
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
@@ -66,7 +66,7 @@ export default function ForgotPassword() {
                 />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.forgotPasswordButton}>
+            <TouchableOpacity style={styles.forgotPasswordButton} onPress={()=> navigation.push('Login')}>
               <Text style={styles.forgotPasswordButtonText}>Submit</Text>
             </TouchableOpacity>
           </View>
