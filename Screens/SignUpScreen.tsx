@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import {
   View,
   Text,
@@ -9,8 +9,12 @@ import {
   Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Ionicons from '@expo/vector-icons/Ionicons'
 
 export default function SignUpScreen({ navigation }) {
+
+  const [hidePassword, setHidePassword] = useState(true);
+  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
   return (     
     <SafeAreaView style={styles.container}>
@@ -40,16 +44,39 @@ export default function SignUpScreen({ navigation }) {
               style={styles.input}
               placeholder="Email Address"
             />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              secureTextEntry={true}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Confirm Password"
-              secureTextEntry={true}
-            />
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder="Password"
+                secureTextEntry={hidePassword}
+              />
+              <TouchableOpacity
+                style={styles.passwordIcon}
+                onPress={() => setHidePassword(!hidePassword)}
+                >
+                <Ionicons
+                  size={24}
+                  color='gray'
+                  name={hidePassword ? 'eye' : 'eye-off'}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder="Confirm Password"
+                secureTextEntry={hideConfirmPassword}
+              />
+              <TouchableOpacity
+                style={styles.passwordIcon}
+                onPress={() => setHideConfirmPassword(!hideConfirmPassword)}>
+                <Ionicons
+                  size={24}
+                  color='gray'
+                  name={hideConfirmPassword ? 'eye' : 'eye-off'}
+                />
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity style={styles.createAccountButton} onPress={()=> { 
               alert("Account created successfully!")
               navigation.push('Login')
@@ -118,6 +145,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#ededed",
   },
+  inputPassword: {
+    width: "100%",
+    height: 50,
+    borderColor: "gray",
+    borderWidth: 0.8,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+    backgroundColor: "#ededed",
+  },
   createAccountButton: {
     height: 50,
     backgroundColor: "#DEC109",
@@ -135,6 +171,16 @@ const styles = StyleSheet.create({
     paddingTop: 14,
     justifyContent: "center",
     paddingBottom: 10,
+  },
+  inputTextContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  passwordIcon: {
+    position: 'absolute',
+    right: 10,
+    alignSelf: 'center',
   }
 });
 

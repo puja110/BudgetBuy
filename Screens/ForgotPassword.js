@@ -67,7 +67,10 @@ export default function ForgotPassword({ navigation }) {
             </View>
             <TouchableOpacity 
               style={styles.forgotPasswordButton} 
-              onPress={()=> navigation.push('Login')}>
+              onPress={()=> {
+                alert("Reset password successfully!")
+                navigation.push('Login')
+              }}>
               <Text style={styles.forgotPasswordButtonText}>Submit</Text>
             </TouchableOpacity>
           </View>
@@ -109,10 +112,12 @@ const styles = StyleSheet.create({
     height: 50,
     borderColor: "gray",
     borderWidth: 0.8,
-    marginBottom: 20,
     paddingHorizontal: 15,
     borderRadius: 20,
     backgroundColor: "#ededed",
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   forgotPasswordButton: {
     height: 50,
@@ -139,10 +144,11 @@ const styles = StyleSheet.create({
   inputTextContainer: {
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: 20,
   },
   passwordIcon: {
     position: 'absolute',
-    right: 14,
-    top: 14,
+    right: 10,
+    alignSelf: 'center',
   }
 });
