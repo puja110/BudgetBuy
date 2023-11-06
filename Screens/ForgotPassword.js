@@ -127,7 +127,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   forgotPassworInputTextTitle: {
-    marginBottom: 10
+    marginBottom: 10,
+    color: 'gray',
+    fontSize: 14,
   },
   forgotPasswordInputTextTitle: {
     color:'lightgray',
