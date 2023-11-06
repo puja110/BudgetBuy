@@ -10,22 +10,19 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-
 export default function SignUpScreen({ navigation }) {
 
-    return (
-       
-<SafeAreaView style={styles.container}>
+  return (     
+    <SafeAreaView style={styles.container}>
       <ImageBackground
         source={require("../assets/loginBackground.jpeg")}
-        style={{ width: "100%", height: "100%", position: "absolute" }}
+        style={styles.imageBackground}
       >
         <View style={styles.overlay}>
           <View style={styles.inputContainer}>
-            <View style={styles.loginContainer}>
-              <Text style={styles.loginText}>Sign up</Text>
+            <View style={styles.signupContainer}>
+              <Text style={styles.signupText}>Sign up</Text>
             </View>
-
             <TextInput
               style={styles.input}
               placeholder="Name"
@@ -35,49 +32,41 @@ export default function SignUpScreen({ navigation }) {
               style={styles.input}
               placeholder="Address"
             />
-
-<TextInput
+            <TextInput
               style={styles.input}
               placeholder="Phone number"
-             
             />
-
-<TextInput
+            <TextInput
               style={styles.input}
               placeholder="Email Address"
             />
-
-<TextInput
+            <TextInput
               style={styles.input}
               placeholder="Password"
               secureTextEntry={true}
             />
-
-<TextInput
+            <TextInput
               style={styles.input}
               placeholder="Confirm Password"
               secureTextEntry={true}
             />
-
-
-            <TouchableOpacity style={styles.createAccountButton} onPress={()=> navigation.push('Login')}>
+            <TouchableOpacity style={styles.createAccountButton} onPress={()=> { 
+              alert("Account created successfully!")
+              navigation.push('Login')
+              }}>
               <Text style={styles.createAccountButtonText}>Create Account</Text>
             </TouchableOpacity>
-
             <View style={styles.haveAccountView}>
               <Text>Already have an account?</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> navigation.push('Login')}>
                 <Text
-                  style={{ textDecorationLine: "underline", color: "#DEC109" }}
+                  style={styles.loginText}
                 >
                   {" "}
                   Log in
                 </Text>
               </TouchableOpacity>
             </View>
-
-
-
           </View>
         </View>
       </ImageBackground>
@@ -91,7 +80,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   container: {
     flex: 1,
     justifyContent: "center",
@@ -103,28 +91,33 @@ const styles = StyleSheet.create({
     width: "85%",
     padding: 2,
   },
-
-  loginText: {
+  signupText: {
     fontFamily: "Helvetica Neue",
     fontSize: 35,
     fontWeight: "bold",
   },
-
-  loginContainer: {
+  signupContainer: {
     marginBottom: 20,
   },
-
+  loginText: {
+    textDecorationLine: "underline", 
+    color: "#DEC109"
+  },
+  imageBackground: {
+    width: "100%", 
+    height: "100%", 
+    position: "absolute"
+  },
   input: {
     width: "100%",
     height: 50,
     borderColor: "gray",
-    borderWidth: 1,
+    borderWidth: 0.8,
     marginBottom: 20,
     paddingHorizontal: 10,
     borderRadius: 20,
-    backgroundColor: "lightgray",
+    backgroundColor: "#ededed",
   },
-
   createAccountButton: {
     height: 50,
     backgroundColor: "#DEC109",
@@ -134,17 +127,15 @@ const styles = StyleSheet.create({
   createAccountButtonText: {
     color: "white",
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: "bold",
   },
-
    haveAccountView: {
     flexDirection: "row",
     paddingTop: 10,
     justifyContent: "center",
     paddingBottom: 10,
   }
-
 });
 
 

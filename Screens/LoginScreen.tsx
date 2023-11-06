@@ -16,7 +16,7 @@ export default function LoginScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <ImageBackground
         source={require("../assets/loginBackground.jpeg")}
-        style={styles.ImageBackground}
+        style={styles.imageBackground}
       >
         <View style={styles.overlay}>
           <View style={styles.inputContainer}>
@@ -50,7 +50,7 @@ export default function LoginScreen({ navigation }) {
 
               <TouchableOpacity onPress={()=> navigation.push('SignUp')}>
                 <Text
-                  style={styles.signupTexte}
+                  style={styles.signupText}
                 >
                   {" "}
                   Sign Up
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 2,
   },
-  ImageBackground: {
+  imageBackground: {
     width: "100%", 
     height: "100%", 
     position: "absolute"
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     marginBottom: 30,
   },
-  signupTexte: {
+  signupText: {
     textDecorationLine: "underline", 
     color: "#DEC109"
   },
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     borderColor: "gray",
-    borderWidth: 0.5,
+    borderWidth: 0.8,
     marginBottom: 20,
     paddingHorizontal: 15,
     borderRadius: 20,
