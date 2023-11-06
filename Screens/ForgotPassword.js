@@ -40,7 +40,7 @@ export default function ForgotPassword({ navigation }) {
                 >
                 <Ionicons
                   size={24}
-                  color='#389CD7'
+                  color='gray'
                   name={hidePassword ? 'eye' : 'eye-off'}
                 />
               </TouchableOpacity>
@@ -61,7 +61,7 @@ export default function ForgotPassword({ navigation }) {
                 >
                 <Ionicons
                   size={24}
-                  color='#389CD7'
+                  color='gray'
                   name={hideConfirmPassword ? 'eye' : 'eye-off'}
                 />
               </TouchableOpacity>
