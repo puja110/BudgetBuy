@@ -15,7 +15,7 @@ export default function SignUpScreen({ navigation }) {
   return (     
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/loginBackground.jpeg")}
+        source={require("../assets/authenticationBackground.jpeg")}
         style={styles.imageBackground}
       >
         <View style={styles.overlay}>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
    haveAccountView: {
     flexDirection: "row",
-    paddingTop: 10,
+    paddingTop: 14,
     justifyContent: "center",
     paddingBottom: 10,
   }
