@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,17 +6,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
-  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-export default function SignUpScreen({ navigation }) {
-
+export default function ForgotPassword({ navigation }) {
+  
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
-  return (     
+  return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
         source={require("../assets/authenticationBackground.jpeg")}
@@ -24,31 +23,16 @@ export default function SignUpScreen({ navigation }) {
       >
         <View style={styles.overlay}>
           <View style={styles.inputContainer}>
-            <View style={styles.signupContainer}>
-              <Text style={styles.signupText}>Sign up</Text>
-            </View>
-            <TextInput
-              style={styles.input}
-              placeholder="Name"
-              keyboardType= 'default'
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Address"
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Phone number"
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Email Address"
-            />
+            <Text style={styles.forgotPasswordText}>Reset Password</Text>
+            <Text style={styles.forgotPassworInputTextTitle}>New password</Text>
             <View style={styles.inputTextContainer}>
               <TextInput
-                style={styles.inputPassword}
-                placeholder="Password"
+                style={styles.input}
+                keyboardType="password"
                 secureTextEntry={hidePassword}
+                placeholder="Password"
+                placeholderTextColor="gray"
+                autoCorrect={false}
               />
               <TouchableOpacity
                 style={styles.passwordIcon}
@@ -61,11 +45,15 @@ export default function SignUpScreen({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
+            <Text style={styles.forgotPassworInputTextTitle}>Confirm new password</Text>
             <View style={styles.inputTextContainer}>
               <TextInput
-                style={styles.inputPassword}
-                placeholder="Confirm Password"
+                style={styles.input}
+                keyboardType="password"
                 secureTextEntry={hideConfirmPassword}
+                placeholder="Confirm password"
+                placeholderTextColor="gray"
+                autoCorrect={false}
               />
               <TouchableOpacity
                 style={styles.passwordIcon}
@@ -77,23 +65,14 @@ export default function SignUpScreen({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.createAccountButton} onPress={()=> { 
-              alert("Account created successfully!")
-              navigation.push('Login')
+            <TouchableOpacity 
+              style={styles.forgotPasswordButton} 
+              onPress={()=> {
+                alert("Reset password successfully!")
+                navigation.push('Login')
               }}>
-              <Text style={styles.createAccountButtonText}>Create Account</Text>
+              <Text style={styles.forgotPasswordButtonText}>Submit</Text>
             </TouchableOpacity>
-            <View style={styles.haveAccountView}>
-              <Text>Already have an account?</Text>
-              <TouchableOpacity onPress={()=> navigation.push('Login')}>
-                <Text
-                  style={styles.loginText}
-                >
-                  {" "}
-                  Log in
-                </Text>
-              </TouchableOpacity>
-            </View>
           </View>
         </View>
       </ImageBackground>
@@ -115,62 +94,52 @@ const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
     justifyContent: "center",
-    width: "85%",
+    width: "80%",
     padding: 2,
-  },
-  signupText: {
-    fontFamily: "Helvetica Neue",
-    fontSize: 35,
-    fontWeight: "bold",
-  },
-  signupContainer: {
-    marginBottom: 20,
-  },
-  loginText: {
-    textDecorationLine: "underline", 
-    color: "#DEC109"
   },
   imageBackground: {
     width: "100%", 
     height: "100%", 
     position: "absolute"
   },
+  forgotPasswordText: {
+    fontSize: 35,
+    fontWeight: "bold",
+    marginBottom: 30
+  },
   input: {
-    width: "100%",
+    width: '100%',
     height: 50,
     borderColor: "gray",
     borderWidth: 0.8,
-    marginBottom: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     borderRadius: 20,
     backgroundColor: "#ededed",
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignContent: 'center'
   },
-  inputPassword: {
-    width: "100%",
-    height: 50,
-    borderColor: "gray",
-    borderWidth: 0.8,
-    paddingHorizontal: 10,
-    borderRadius: 20,
-    backgroundColor: "#ededed",
-  },
-  createAccountButton: {
+  forgotPasswordButton: {
     height: 50,
     backgroundColor: "#DEC109",
     padding: 10,
     borderRadius: 15,
+    marginTop: 10,
   },
-  createAccountButtonText: {
+  forgotPasswordButtonText: {
     color: "white",
     textAlign: "center",
     fontSize: 22,
     fontWeight: "bold",
   },
-   haveAccountView: {
-    flexDirection: "row",
-    paddingTop: 14,
-    justifyContent: "center",
-    paddingBottom: 10,
+  forgotPassworInputTextTitle: {
+    marginBottom: 10,
+    color: 'gray',
+    fontSize: 14,
+  },
+  forgotPasswordInputTextTitle: {
+    color:'lightgray',
+    fontSize: 18,
   },
   inputTextContainer: {
     display: 'flex',
@@ -183,5 +152,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   }
 });
-
-

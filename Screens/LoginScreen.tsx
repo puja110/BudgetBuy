@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import {
   View,
   Text,
@@ -9,16 +9,17 @@ import {
   Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Ionicons from '@expo/vector-icons/Ionicons'
 
-
-
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   
+  const [hidePassword, setHidePassword] = useState(true);
+
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/loginBackground.jpeg")}
-        style={{ width: "100%", height: "100%", position: "absolute" }}
+        source={require("../assets/authenticationBackground.jpeg")}
+        style={styles.imageBackground}
       >
         <View style={styles.overlay}>
           <View style={styles.inputContainer}>
@@ -31,75 +32,86 @@ export default function LoginScreen() {
               placeholder="Email"
               keyboardType="email-address"
             />
-            <TextInput
-              style={styles.input}
-              placeholder="Password"
-              secureTextEntry={true}
-            />
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry={hidePassword}
+              />
+              <TouchableOpacity
+                style={styles.passwordIcon}
+                onPress={() => setHidePassword(!hidePassword)}>
+                <Ionicons
+                  size={24}
+                  color='gray'
+                  name={hidePassword ? 'eye' : 'eye-off'}
+                />
+              </TouchableOpacity>
+            </View>
 
             <View style={styles.forgotPasswordContainer}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> navigation.push('ForgotPassword')}>
                 <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity style={styles.loginButton}> 
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
 
             <View style={styles.noAccountView}>
               <Text> Don't have an account?</Text>
 
-              <TouchableOpacity >
+              <TouchableOpacity onPress={()=> navigation.push('SignUp')}>
                 <Text
-                  style={{ textDecorationLine: "underline", color: "#DEC109" }}
+                  style={styles.signupText}
                 >
                   {" "}
-                  Sing Up
+                  Sign Up
                 </Text>
               </TouchableOpacity>
             </View>
 
-            <View style={{ flexDirection: "row" }}>
-              <View style={{ paddingBottom: 15 }}>
-                <Text style={{ color: "gray" }}> __________________ </Text>
-              </View>
-              <Text style={{ color: "gray", fontSize: 20 }}> or </Text>
+            <View style={styles.orContainer}>
               <View>
-                <Text style={{ color: "gray" }}> __________________ </Text>
+                <Text style={styles.greyText}> __________________ </Text>
+              </View>
+              <Text style={styles.orText}> or </Text>
+              <View>
+                <Text style={styles.greyText}> __________________ </Text>
               </View>
             </View>
 
-            <Text style={{ color: "gray" }}>
+            <Text style={styles.greyText}>
               {" "}
               Login with the following options
             </Text>
 
-            <View style={{ flexDirection: "row", paddingTop: 20, justifyContent: 'space-between'}}>
+            <View style={styles.loginOptionsContainer}>
               <TouchableOpacity 
-              style={styles.iconButtons}
-              onPress={() => {}}>
+                style={styles.iconButtons}
+                onPress={() => {}}>
                 <Image
                   source={require("../assets/googleLogo.png")}
-                  style={{ width: 40, height: 40 }}
+                  style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
 
               <TouchableOpacity 
-              style={styles.iconButtons}
-              onPress={() => {}}>
+                style={styles.iconButtons}
+                onPress={() => {}}>
                 <Image
                   source={require("../assets/facebookLogo.png")}
-                  style={{ width: 40, height: 40 }}
+                  style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
-              style={styles.iconButtons}
-              onPress={() => {}}>
+                style={styles.iconButtons}
+                onPress={() => {}}>
                 <Image
                   source={require("../assets/appleLogo.png")}
-                  style={{ width: 40, height: 40 }}
+                  style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
             </View>
@@ -116,7 +128,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   container: {
     flex: 1,
     justifyContent: "center",
@@ -128,63 +139,94 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 2,
   },
-
+  imageBackground: {
+    width: "100%", 
+    height: "100%", 
+    position: "absolute"
+  },
   loginText: {
     fontSize: 35,
     fontWeight: "bold",
   },
-
   loginContainer: {
-    marginBottom: 20,
+    marginBottom: 10,
+  },
+  signupText: {
+    textDecorationLine: "underline", 
+    color: "#DEC109"
   },
   input: {
     width: "100%",
     height: 50,
     borderColor: "gray",
-    borderWidth: 1,
-    marginBottom: 20,
+    borderWidth: 0.5,
+    marginTop: 16,
+    marginBottom: 10,
     paddingHorizontal: 15,
     borderRadius: 20,
-    backgroundColor: "lightgray",
+    backgroundColor: "#ededed",
   },
-
   forgotPasswordContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
   },
-
   forgotPasswordText: {
     color: "#DEC109",
     textDecorationLine: "underline",
-    paddingBottom: 20,
   },
   loginButton: {
     height: 50,
     backgroundColor: "#DEC109",
     padding: 10,
     borderRadius: 15,
+    marginTop: 20,
   },
   loginButtonText: {
     color: "white",
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: "bold",
   },
-
+  greyText: {
+    color: "gray"
+  },
+  orContainer: {
+    flexDirection: "row", 
+    justifyContent: 'space-around', 
+    marginVertical: 35,
+  },
+  orText: {
+    color: "gray", 
+    fontSize: 20 
+  },
+  loginOptionsContainer: {
+    flexDirection: "row", 
+    paddingTop: 20, 
+    justifyContent: 'space-between'
+  },
+  loginOptionsImage: {
+    width: 35, 
+    height: 35,
+  },
   noAccountView: {
     flexDirection: "row",
-    paddingTop: 10,
+    paddingTop: 14,
     justifyContent: "center",
-    paddingBottom: 10,
   },
-
   iconButtons : {
     borderColor: 'DEDED9',
-    backgroundColor: '#DEDED9',
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 3
+    backgroundColor: "#edebeb",
+    borderRadius: 15,
+    paddingHorizontal: 16,
+    paddingVertical: 6
+  },
+  inputTextContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  passwordIcon: {
+    position: 'absolute',
+    right: 10,
+    alignSelf: 'center',
   }
-
 });
