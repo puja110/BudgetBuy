@@ -6,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
-  Image,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
@@ -19,7 +18,7 @@ export default function SignUpScreen({ navigation }) {
   return (     
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/authenticationBackground.jpeg")}
+        source={require("../../assets/authenticationBackground.jpeg")}
         style={styles.imageBackground}
       >
         <View style={styles.overlay}>
