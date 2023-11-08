@@ -16,7 +16,7 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 export default function MyFavourites({ navigation }){
 
     return(
-        <ScrollView style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={{marginTop:60,paddingLeft:300,}}>
             <TouchableOpacity>
             <Ionicons name="mail" size={32} color="orange" />
@@ -25,7 +25,7 @@ export default function MyFavourites({ navigation }){
             <View style={styles.headContainer}>
             <Text style={styles.heading}>Favourites</Text>
             </View>
-                <View>
+                <ScrollView>
                     <View style={styles.box}>
                         <View style={styles.productImage} >
                         </View>
@@ -86,8 +86,9 @@ export default function MyFavourites({ navigation }){
                         <Ionicons name="heart" size={32} color="red"/>
                         </View>
                     </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+            
+        </SafeAreaView>
     )
 
 }
