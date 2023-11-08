@@ -38,6 +38,54 @@ export default function MyFavourites({ navigation }){
                         <Ionicons name="heart" size={32} color="red"/>
                         </View>
                 </View>
+                <View style={styles.box}>
+                        <View style={styles.productImage} >
+                        </View>
+                        <View style={styles.list}>
+                        <Text style={{fontSize:15,fontWeight:'bold',}}>Macbook Air</Text>
+                        <Text style={{fontSize:12,color:'#c68ca3'}}>20 Apr 2021</Text>
+                        <Text style={{fontSize:12,color:'#17858f'}}>CAD $350.00</Text>
+                        </View>
+                        <View style={{flexDirection:'column-reverse'}}>
+                        <Ionicons name="heart" size={32} color="red"/>
+                        </View>
+                    </View>
+                    <View style={styles.box}>
+                        <View style={styles.productImage} >
+                        </View>
+                        <View style={styles.list}>
+                        <Text style={{fontSize:15,fontWeight:'bold',}}>Amazon Alexa</Text>
+                        <Text style={{fontSize:12,color:'#c68ca3'}}>14 Apr 2021</Text>
+                        <Text style={{fontSize:12,color:'#17858f'}}>CAD $9.00</Text>
+                        </View>
+                        <View style={{flexDirection:'column-reverse'}}>
+                        <Ionicons name="heart" size={32} color="red"/>
+                        </View>
+                    </View>
+                    <View style={styles.box}>
+                        <View style={styles.productImage} >
+                        </View>
+                        <View style={styles.list}>
+                        <Text style={{fontSize:15,fontWeight:'bold',}}>LG Monitor</Text>
+                        <Text style={{fontSize:12,color:'#c68ca3'}}>13 Apr 2021</Text>
+                        <Text style={{fontSize:12,color:'#17858f'}}>CAD $90.00</Text>
+                        </View>
+                        <View style={{flexDirection:'column-reverse'}}>
+                        <Ionicons name="heart" size={32} color="red"/>
+                        </View>
+                    </View>
+                    <View style={styles.box}>
+                        <View style={styles.productImage} >
+                        </View>
+                        <View style={styles.list}>
+                        <Text style={{fontSize:15,fontWeight:'bold',}}>Google Home Mini</Text>
+                        <Text style={{fontSize:12,color:'#c68ca3'}}>12 Apr 2021</Text>
+                        <Text style={{fontSize:12,color:'#17858f'}}>CAD $12.00</Text>
+                        </View>
+                        <View style={{flexDirection:'column-reverse'}}>
+                        <Ionicons name="heart" size={32} color="red"/>
+                        </View>
+                    </View>
             </View>
         </SafeAreaView>
     )
