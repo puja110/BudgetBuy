@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  Touchable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
@@ -113,6 +114,12 @@ export default function LoginScreen({ navigation }) {
                   source={require("../assets/appleLogo.png")}
                   style={styles.loginOptionsImage}
                 />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.myfav}>
+              <TouchableOpacity 
+                onPress={()=> navigation.push('My Favourites')} >
+                <Text style={{textAlign:'center'}}>My Favourite</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -228,5 +235,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     alignSelf: 'center',
+  },
+  myfav:{
+    backgroundColor:'grey',
+    borderRadius:15,
+    padding:15,
+    alignItems:'center'
   }
 });
