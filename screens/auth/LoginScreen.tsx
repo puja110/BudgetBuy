@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  Touchable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
@@ -18,7 +19,7 @@ export default function LoginScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/authenticationBackground.jpeg")}
+        source={require("../../assets/authenticationBackground.jpeg")}
         style={styles.imageBackground}
       >
         <View style={styles.overlay}>
@@ -55,7 +56,7 @@ export default function LoginScreen({ navigation }) {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.loginButton}> 
+            <TouchableOpacity style={styles.loginButton} onPress={()=> navigation.push('TabBar')}> 
               <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
 
@@ -92,7 +93,7 @@ export default function LoginScreen({ navigation }) {
                 style={styles.iconButtons}
                 onPress={() => {}}>
                 <Image
-                  source={require("../assets/googleLogo.png")}
+                  source={require("../../assets/googleLogo.png")}
                   style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
@@ -101,7 +102,7 @@ export default function LoginScreen({ navigation }) {
                 style={styles.iconButtons}
                 onPress={() => {}}>
                 <Image
-                  source={require("../assets/facebookLogo.png")}
+                  source={require("../../assets/facebookLogo.png")}
                   style={styles.loginOptionsImage}
                 />
               </TouchableOpacity>
@@ -110,9 +111,15 @@ export default function LoginScreen({ navigation }) {
                 style={styles.iconButtons}
                 onPress={() => {}}>
                 <Image
-                  source={require("../assets/appleLogo.png")}
+                  source={require("../../assets/appleLogo.png")}
                   style={styles.loginOptionsImage}
                 />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.myfav}>
+              <TouchableOpacity 
+                onPress={()=> navigation.push('My Favourites')} >
+                <Text style={{textAlign:'center'}}>My Favourite</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -228,5 +235,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     alignSelf: 'center',
+  },
+  myfav:{
+    backgroundColor:'grey',
+    borderRadius:15,
+    padding:15,
+    alignItems:'center'
   }
 });

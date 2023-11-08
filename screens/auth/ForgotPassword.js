@@ -18,7 +18,7 @@ export default function ForgotPassword({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../assets/authenticationBackground.jpeg")}
+        source={require("../../assets/authenticationBackground.jpeg")}
         style={styles.imageBackground}
       >
         <View style={styles.overlay}>
