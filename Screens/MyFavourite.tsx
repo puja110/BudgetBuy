@@ -17,7 +17,7 @@ export default function MyFavourites({ navigation }){
 
     return(
         <SafeAreaView style={styles.container}>
-            <View style={{marginTop:60,paddingLeft:300,}}>
+            <View style={{paddingLeft:340}}>
             <TouchableOpacity>
             <Ionicons name="mail" size={32} color="orange" />
             </TouchableOpacity>

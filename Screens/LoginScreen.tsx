@@ -116,9 +116,10 @@ export default function LoginScreen({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <View>
-              <TouchableOpacity onPress={()=> navigation.push('MyFav')} >
-                <Text>My Favourite</Text>
+            <View style={styles.myfav}>
+              <TouchableOpacity 
+                onPress={()=> navigation.push('My Favourites')} >
+                <Text style={{textAlign:'center'}}>My Favourite</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -234,5 +235,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
     alignSelf: 'center',
+  },
+  myfav:{
+    backgroundColor:'grey',
+    borderRadius:15,
+    padding:15,
+    alignItems:'center'
   }
 });
