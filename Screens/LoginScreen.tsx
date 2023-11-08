@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Image,
+  Touchable,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from '@expo/vector-icons/Ionicons'
@@ -113,6 +114,11 @@ export default function LoginScreen({ navigation }) {
                   source={require("../assets/appleLogo.png")}
                   style={styles.loginOptionsImage}
                 />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity onPress={()=> navigation.push('MyFav')} >
+                <Text>My Favourite</Text>
               </TouchableOpacity>
             </View>
           </View>
