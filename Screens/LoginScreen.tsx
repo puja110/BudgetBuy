@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     color: "#DEC109"
   },
   input: {
-    width: '100%',
+    width: "100%",
     height: 50,
     borderColor: "gray",
     borderWidth: 0.5,
