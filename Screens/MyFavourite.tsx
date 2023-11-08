@@ -16,7 +16,7 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 export default function MyFavourites({ navigation }){
 
     return(
-        <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={{marginTop:60,paddingLeft:300,}}>
             <TouchableOpacity>
             <Ionicons name="mail" size={32} color="orange" />
@@ -87,7 +87,7 @@ export default function MyFavourites({ navigation }){
                         </View>
                     </View>
             </View>
-        </SafeAreaView>
+        </ScrollView>
     )
 
 }
