@@ -116,6 +116,7 @@ export default function LoginScreen({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
+          </View> 
         </View>
       </ImageBackground>
     </SafeAreaView>
