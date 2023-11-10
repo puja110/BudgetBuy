@@ -13,7 +13,7 @@ const EditProfileView = () => {
     setName('Aprilia Honda')
     setEmail('AH@gmail.com')
     setphnNum('00000000')
-    setAddress('Barrieaaa')
+    setAddress('Barrie')
     setAvatar('https://reactjs.org/logo-og.png')
   }, []);
 
