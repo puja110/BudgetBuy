@@ -3,13 +3,11 @@ BudgetBuy is more than just a shopping app—it's a dedication to enabling every
 
 Screenshots of all the screens of the BudgetBuy app:
 
-![Screenshot_1699580537](https://github.com/puja110/BudgetBuy/assets/26729312/7ca22509-acb0-4b5d-9fe8-803d49f95b4b)
-![Screenshot_1699580125](https://github.com/puja110/BudgetBuy/assets/26729312/8f626ee4-db53-40ec-b498-43726295328f)
-![Screenshot_1699580106](https://github.com/puja110/BudgetBuy/assets/26729312/fdd7b950-12f1-4daf-a762-e5dc69fd5a02)
-![Screenshot_1699580171](https://github.com/puja110/BudgetBuy/assets/26729312/bfe49e32-34cf-45f1-b9f2-ddd16e18b70d)
-![Screenshot_1699580169](https://github.com/puja110/BudgetBuy/assets/26729312/2b9d1283-8f55-4128-a71f-dc6c97e5d5c8)
-![Screenshot_1699580166](https://github.com/puja110/BudgetBuy/assets/26729312/ee420421-de66-495c-8a30-e16cd2c7bab7)
-![Screenshot_1699580164](https://github.com/puja110/BudgetBuy/assets/26729312/045295c1-45ba-4309-9c7f-350ce0a19f41)
-![Screenshot_1699580159](https://github.com/puja110/BudgetBuy/assets/26729312/933888eb-621d-49ae-8bec-bb6867e6b611)
-
-![Screenshot_1699580159](https://github.com/puja110/BudgetBuy/assets/26729312/ce95e3be-7eb7-4d26-a59d-258448298c44)
+![Screenshot_1699580106](https://github.com/puja110/BudgetBuy/assets/26729312/c94bce8b-df96-4203-a72d-5d0451292d11)
+![Screenshot_1699580125](https://github.com/puja110/BudgetBuy/assets/26729312/4363ef51-2fe8-4d45-a3c4-f29e5211a91d)
+![Screenshot_1699580537](https://github.com/puja110/BudgetBuy/assets/26729312/06c172a9-06d8-4b78-96b5-4c4ae90873f5)
+![Screenshot_1699580159](https://github.com/puja110/BudgetBuy/assets/26729312/88c52cd8-fcb3-4a87-a0ce-4a4e1c6ab0b4)
+![Screenshot_1699580164](https://github.com/puja110/BudgetBuy/assets/26729312/a7e2fae2-5805-45ad-bd10-6626d3739d78)
+![Screenshot_169958016![Screenshot_1699580169](https://github.com/puja110/BudgetBuy/assets/26729312/cdd33eaf-0f78-4362-8877-52104f8c9573)
+![Screenshot_1699580169](https://github.com/puja110/BudgetBuy/assets/26729312/0c627ede-8db7-4210-9819-e197e9eb559e)
+![Screenshot_1699580171](https://github.com/puja110/BudgetBuy/assets/26729312/46faceff-33d4-4f68-94e1-813801092e25)
