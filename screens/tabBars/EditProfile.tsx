@@ -7,7 +7,7 @@ const EditProfileView = () => {
   const [email, setEmail] = useState('');
   const [phnNum, setphnNum] = useState('');
   const [Address, setAddress] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState('https://reactjs.org/logo-og.png');
 
   useEffect(() => {
     setName('Aprilia Honda')
@@ -63,7 +63,7 @@ const EditProfileView = () => {
         />
        
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Logout</Text>
+          <Text style={styles.buttonText}>Update</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     width: '100%', // Made the form width 100% of the screen
   },
   label: {
-    marginTop: 20,
+    paddingVertical: 10
   },
   input: {
     borderColor: '#ccc',
@@ -107,13 +107,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     fontSize: 18,
-    marginBottom: 20, // Added some margin at the bottom of each input
+    marginBottom: 10, // Added some margin at the bottom of each input
   },
   button: {
     backgroundColor: 'orange', // Changed the button background color to orange
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 20,
+    marginTop: 12
   },
   buttonText: {
     color: '#fff',

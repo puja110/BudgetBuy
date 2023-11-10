@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomePage from './HomePage';
-import ProfilePage from './ProfilePage';
+import ProfilePage from './EditProfile';
 import HistoryPage from './HistoryPage';
 import Favorites from './MyFavourite';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import MyProfile from './MyProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,11 +47,20 @@ function TabBar() {
           }}
         />
         <Tab.Screen
-          name="Profile"
+          name="Edit Profile"
           component={ProfilePage}
           options={{
             tabBarIcon: () => (
               <MaterialIcons name="person" color={"black"} size={30} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="MyProfile"
+          component={MyProfile}
+          options={{
+            tabBarIcon: () => (
+              <MaterialIcons name="logout" color={"black"} size={30} />
             ),
           }}
         />
