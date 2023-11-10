@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './Screens/LoginScreen';
 import SignUpScreen from './Screens/SignUpScreen';
 import ForgotPassword from './Screens/ForgotPassword';
-import MyFavourites from './Screens/MyFavourite';
+// import MyFavourites from './Screens/MyFavourite';
 import TabBar from './TabBars/TabBar';
 import MyFavourites from './Screens/MyFavourite';
 

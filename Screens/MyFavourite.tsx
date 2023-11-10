@@ -5,7 +5,6 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-
   ImageBackground,
   Image,
   ScrollView,
@@ -28,6 +27,10 @@ export default function MyFavourites({ navigation }){
                 <ScrollView>
                     <View style={styles.box}>
                         <View style={styles.productImage} >
+                        <Image
+                            source={require("../assets/myfavproducts/jabrawirelessearbuds.jpeg")}
+                             style={styles.myfavproduct}
+                            />
                         </View>
                         <View style={styles.list}>
                         <Text style={{fontSize:15,fontWeight:'bold',}}>Jabra Wireless Earbuds</Text>
@@ -40,6 +43,10 @@ export default function MyFavourites({ navigation }){
                 </View>
                 <View style={styles.box}>
                         <View style={styles.productImage} >
+                        <Image
+                            source={require("../assets/myfavproducts/macbookair.webp")}
+                             style={styles.myfavproduct}
+                            />
                         </View>
                         <View style={styles.list}>
                         <Text style={{fontSize:15,fontWeight:'bold',}}>Macbook Air</Text>
@@ -52,6 +59,10 @@ export default function MyFavourites({ navigation }){
                     </View>
                     <View style={styles.box}>
                         <View style={styles.productImage} >
+                        <Image
+                            source={require("../assets/myfavproducts/amazonalexa.webp")}
+                             style={styles.myfavproduct}
+                            />
                         </View>
                         <View style={styles.list}>
                         <Text style={{fontSize:15,fontWeight:'bold',}}>Amazon Alexa</Text>
@@ -64,6 +75,10 @@ export default function MyFavourites({ navigation }){
                     </View>
                     <View style={styles.box}>
                         <View style={styles.productImage} >
+                        <Image
+                            source={require("../assets/myfavproducts/lgmonitor.jpg")}
+                             style={styles.myfavproduct}
+                            />
                         </View>
                         <View style={styles.list}>
                         <Text style={{fontSize:15,fontWeight:'bold',}}>LG Monitor</Text>
@@ -76,6 +91,10 @@ export default function MyFavourites({ navigation }){
                     </View>
                     <View style={styles.box}>
                         <View style={styles.productImage} >
+                        <Image
+                            source={require("../assets/myfavproducts/googlehomemini.jpeg")}
+                             style={styles.myfavproduct}
+                            />
                         </View>
                         <View style={styles.list}>
                         <Text style={{fontSize:15,fontWeight:'bold',}}>Google Home Mini</Text>
@@ -87,7 +106,6 @@ export default function MyFavourites({ navigation }){
                         </View>
                     </View>
             </ScrollView>
-            
         </SafeAreaView>
     )
 
@@ -133,5 +151,11 @@ const styles = StyleSheet.create({
         padding:5,
         justifyContent:'space-evenly',
         width:175
-    }
+    },
+    myfavproduct:{
+        width: '100%', 
+        height: '100%',
+        padding:0,
+    },
+
 })
