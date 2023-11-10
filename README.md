@@ -11,3 +11,5 @@ Screenshots of all the screens of the BudgetBuy app:
 ![Screenshot_1699580166](https://github.com/puja110/BudgetBuy/assets/26729312/ee420421-de66-495c-8a30-e16cd2c7bab7)
 ![Screenshot_1699580164](https://github.com/puja110/BudgetBuy/assets/26729312/045295c1-45ba-4309-9c7f-350ce0a19f41)
 ![Screenshot_1699580159](https://github.com/puja110/BudgetBuy/assets/26729312/933888eb-621d-49ae-8bec-bb6867e6b611)
+
+![Screenshot_1699580159](https://github.com/puja110/BudgetBuy/assets/26729312/ce95e3be-7eb7-4d26-a59d-258448298c44)
