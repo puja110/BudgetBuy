@@ -116,13 +116,6 @@ export default function LoginScreen({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <View style={styles.myfav}>
-              <TouchableOpacity 
-                onPress={()=> navigation.push('My Favourites')} >
-                <Text style={{textAlign:'center'}}>My Favourite</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
         </View>
       </ImageBackground>
     </SafeAreaView>
