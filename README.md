@@ -1,7 +1,7 @@
 # BudgetBuy
-BudgetBuy is more than just a shopping app—it's a dedication to enabling everyone to purchase sustainably and affordably. By closing the gap between buyers and sellers the app aims to enhance shopping experience and consider the environment more carefully while purchasing secondhand items.
+BudgetBuy is more than just a shopping app—it's a dedication to enabling everyone to purchase sustainably and affordably. By closing the gap between buyers and sellers the app aims to enhance the shopping experience and consider the environment more carefully while purchasing secondhand items.
 
-Screenshots of all the app screens:
+Screenshots of all the screens of the BudgetBuy app:
 
 ![Screenshot_1699580537](https://github.com/puja110/BudgetBuy/assets/26729312/7ca22509-acb0-4b5d-9fe8-803d49f95b4b)
 ![Screenshot_1699580125](https://github.com/puja110/BudgetBuy/assets/26729312/8f626ee4-db53-40ec-b498-43726295328f)
