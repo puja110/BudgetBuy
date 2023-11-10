@@ -1,155 +1,47 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
-
-import Icon from "react-native-vector-icons/MaterialIcons";
-import TableCells from "../tabBars/homePageTableCells/TableCells";
-import BudgetBuyData from "../tabBars/homePageTableCells/BudgetBuyData";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import HistoryItem from "../components/HistporyItem";
+import HistoryData from "../tabBars/data/HistoryData";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 
-const populateCells = ({ item }) => (
-  <TableCells
-    profilePicture={item.profilePicture}
-    name={item.name}
-    location={item.location}
-    productImage={item.productImage}
-    itemName={item.itemName}
-    itemPrice={item.itemPrice}
-    year={item.year}
-  />
-);
-
 function HistoryPage() {
   return (
-    <SafeAreaView style={styles.overlayContainer}>
-      <StatusBar barStyle="black" />
-      <View style={{ width: "auto" }}>
-        <View style={{ paddingLeft: 15, paddingBottom: 5, paddingRight: 15 }}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingLeft: 10,
-            }}
-          >
-            <Text style={styles.HomeText}>Welcome to BudgetBuy!</Text>
-            <TouchableOpacity style={styles.mailIcon}>
-              <Icon name="message" size={20} color="black" />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View style={{ alignItems: "center", paddingBottom: 10 }}>
-          <View style={styles.container}>
-            <TextInput
-              style={styles.input}
-              placeholder="Search for books, guitar and more...."
-            />
-            <Icon name="search" color="#b5b2ae" size={25} style={styles.icon} />
-          </View>
-        </View>
-
-        <View style={styles.catergoryButtons}>
-          <TouchableOpacity onPress={() => {}} style={styles.iconButtons}>
-            <Text style={styles.catergoryButtonsText}> Mobile </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => {}} style={styles.iconButtons}>
-            <Text style={styles.catergoryButtonsText}> Watch </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => {}} style={styles.iconButtons}>
-            <Text style={styles.catergoryButtonsText}> Books </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => {}} style={styles.iconButtons}>
-            <Text style={styles.catergoryButtonsText}> Laptop </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View>
-          <FlatList data={BudgetBuyData} renderItem={populateCells} />
-        </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar/>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>My Post History</Text>
       </View>
+      <FlatList 
+        data={HistoryData} 
+        renderItem={renderItems}
+        keyExtractor={item => item.id}/>
     </SafeAreaView>
   );
 }
 
+const renderItems = ({ item }) => (
+  <HistoryItem
+    itemName={item.itemName}
+    itemImage={item.itemImage}
+    itemPrice={item.itemPrice}
+    views={item.views}
+    date={item.date}
+  />
+);
 export default HistoryPage;
 
 const styles = StyleSheet.create({
-  HomeText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginTop: 15,
-    marginBottom: 10,
-  },
-  mailIcon: {
-    marginTop: 26,
-    marginRight: 10,
-  },
-  iconButtons: {
-    backgroundColor: "black",
-    borderWidth: 8,
-    borderRadius: 10,
-    width: 80,
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    alignItems: "center",
-    height: 40,
-  },
-
-  catergoryButtons: {
-    flexDirection: "row",
-    paddingTop: 1,
-    justifyContent: "space-between",
-    padding: 20,
-    width: "auto",
-  },
-
-  catergoryButtonsText: {
-    color: "white",
-    paddingBottom: 3,
-  },
-  icon: {
-    marginRight: 10,
-  },
-
-  messageIcon: {
-    paddingLeft: 20,
-  },
-
-  overlayContainer: {
-    flex: 1,
-    paddingBottom: 280,
-  },
-
   container: {
-    flexDirection: "row",
-    backgroundColor: "white",
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#ed930c",
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    height: 50,
-    width: 380,
-    justifyContent: "space-between",
-  },
-  input: {
     flex: 1,
-    fontSize: 16,
-    justifyContent: "center",
-    paddingLeft: 10,
   },
-  icon: {
-    marginTop: 2,
+  titleContainer: {
+    paddingHorizontal: 14,
+    marginTop: 20,
+    marginBottom: 6
   },
+  title: {
+    fontSize: 18,
+    color: 'black',
+  }
 });

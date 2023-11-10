@@ -13,15 +13,15 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='ProfilePage' screenOptions={{ headerShown: false }}>
+      {/* <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="TabBar" component={TabBar}/>
         <Stack.Screen name="My Favourites" component={MyFavourites}/>
         <Stack.Screen name="ProfilePage" component={ProfilePage}/>
-      </Stack.Navigator>
-      {/* <TabBar/> */}
+      </Stack.Navigator> */}
+      <TabBar/>
     </NavigationContainer>
   );
 }
