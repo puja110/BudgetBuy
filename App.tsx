@@ -5,6 +5,8 @@ import LoginScreen from './screens/auth/LoginScreen';
 import SignUpScreen from './screens/auth/SignUpScreen';
 import ForgotPassword from './screens/auth/ForgotPassword';
 import MyFavourites from './screens/tabBars/MyFavourite';
+import EditProfile from './screens/tabBars/EditProfile';
+import MyProfile from './screens/tabBars/MyProfile'
 import TabBar from './screens/tabBars/TabBar';
 
 const Stack = createNativeStackNavigator();
@@ -18,7 +20,10 @@ function App() {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="TabBar" component={TabBar}/>
         <Stack.Screen name="My Favourites" component={MyFavourites}/>
+        <Stack.Screen name="ProfilePage" component={EditProfile}/>
+        <Stack.Screen name="MyProfile" component={MyProfile}/>
       </Stack.Navigator>
+      {/* <TabBar/> */}
     </NavigationContainer>
   );
 }
