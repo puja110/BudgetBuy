@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "400",
     color: "gray",
-    paddingBottom: 15
+    paddingBottom: 15,
   },
 
   progessLineContainer: {
