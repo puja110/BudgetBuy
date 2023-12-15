@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
  
-const EditProfileView = () => {
+const EditProfileView = ({ navigation }) => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ const EditProfileView = () => {
 
   const handleSubmit = () => {
     // Handle form submission
-    alert("Profile edited successfully")
+    navigation.push('TabBar')
   }
  
   return (
