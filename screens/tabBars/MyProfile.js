@@ -6,35 +6,38 @@ const MyProfile= ({ navigation }) => {
   return (
     <View style={styles.container}>
         <View style={styles.profileInfo}>
-            <Image source={require("../../assets/goldIphone.png")} style={styles.avatarImage}/>
-            <View>
-              <Text style={styles.userName}>John Doe</Text>
-              <Text>john@gmail.com</Text>
-            </View>
+          <Image source={require("../../assets/goldIphone.png")} style={styles.avatarImage}/>
+          <View>
+            <Text style={styles.userName}>John Doe</Text>
+            <Text>john@gmail.com</Text>
+          </View>
         </View>
         <TouchableOpacity style={styles.subContainer} onPress={()=> navigation.push('EditProfile')}>
-            <Ionicons name="person" size={28} color="white"/>
-            <View style={styles.textContainer}>
-                <Text style={styles.titleText}>My Account</Text>
-                <Text style={styles.subText}>Edit your details</Text>
-            </View>
+          <Ionicons name="person" size={28} color="white"/>
+          <View style={styles.textContainer}>
+            <Text style={styles.titleText}>My Account</Text>
+            <Text style={styles.subText}>Edit your details</Text>
+          </View>
+          <TouchableOpacity style={styles.editProfile} onPress={()=> navigation.push('EditProfile')}>
+              <Text style={styles.editProfileText}>Edit</Text>
+          </TouchableOpacity>
         </TouchableOpacity>
         <TouchableOpacity style={styles.subContainer}>
-            <Ionicons name="star" size={28} color="white"/>
-            <View style={styles.textContainer}>
-                <Text style={styles.titleText}>My Orders</Text>
-                <Text style={styles.subText}>View all your orders</Text>
-            </View>
+          <Ionicons name="star" size={28} color="white"/>
+          <View style={styles.textContainer}>
+              <Text style={styles.titleText}>My Orders</Text>
+              <Text style={styles.subText}>View all your orders</Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.subContainer}>
         <Ionicons name="settings" size={28} color="white"/>
-            <View style={styles.textContainer}>
-                <Text style={styles.titleText}>Settings</Text>
-                <Text style={styles.subText}>View settings</Text>
-            </View>
+          <View style={styles.textContainer}>
+              <Text style={styles.titleText}>Settings</Text>
+              <Text style={styles.subText}>View settings</Text>
+          </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signOutButton} onPress={()=> navigation.push('Login')}>
-            <Text style={styles.signOutButtonText}>Sign Out</Text>
+          <Text style={styles.signOutButtonText}>Sign Out</Text>
         </TouchableOpacity>
     </View>
   );
@@ -83,6 +86,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40 
   },
   userName: {
+    color: 'orange',
     fontSize: 20, 
     fontWeight: 'bold',
     paddingBottom: 4
@@ -94,6 +98,19 @@ const styles = StyleSheet.create({
     width:60,
     borderRadius: 50,
     marginRight: 20
+  },
+  editProfile: {
+    justifyContent: 'center',
+    alignContent: 'center', 
+    backgroundColor: 'orange', 
+    marginStart: 130, 
+    borderRadius: 6
+  },
+  editProfileText: {
+    paddingHorizontal: 12, 
+    color: 'white', 
+    fontStyle: 'bold',
+    fontSize: 16
   }
 });
  
