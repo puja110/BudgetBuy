@@ -19,6 +19,7 @@ const EditProfileView = () => {
 
   const handleSubmit = () => {
     // Handle form submission
+    alert("Profile edited successfully")
   }
  
   return (
@@ -28,7 +29,7 @@ const EditProfileView = () => {
           style={styles.avatar}
           source={{ uri: avatar }}
         />
-        <TouchableOpacity style={styles.changeAvatarButton} onPress={() => {/* open image picker */}}>
+        <TouchableOpacity style={styles.changeAvatarButton}>
           <Text style={styles.changeAvatarButtonText}>Change Avatar</Text>
         </TouchableOpacity>
       </View>

@@ -4,6 +4,7 @@ import HomePage from './HomePage';
 import ProfilePage from './EditProfile';
 import HistoryPage from './HistoryPage';
 import Favorites from './MyFavourite';
+import PostItem from './PostItem';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MyProfile from './MyProfile';
@@ -24,7 +25,25 @@ function TabBar() {
           component={HomePage}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="home" color={"black"} size={30} />
+              <MaterialIcons name="home" color={"black"} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Favorite"
+          component={Favorites}
+          options={{
+            tabBarIcon: () => (
+              <MaterialIcons name="favorite" color={"black"} size={26} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Add"
+          component={PostItem}
+          options={{
+            tabBarIcon: () => (
+              <MaterialIcons name="add" color={"black"} size={30} />
             ),
           }}
         />
@@ -33,25 +52,7 @@ function TabBar() {
           component={HistoryPage}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="history" color={"black"} size={30} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Favorites"
-          component={Favorites}
-          options={{
-            tabBarIcon: () => (
-              <MaterialIcons name="favorite" color={"black"} size={30} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Edit Profile"
-          component={ProfilePage}
-          options={{
-            tabBarIcon: () => (
-              <MaterialIcons name="person" color={"black"} size={30} />
+              <MaterialIcons name="history" color={"black"} size={26} />
             ),
           }}
         />
@@ -60,7 +61,7 @@ function TabBar() {
           component={MyProfile}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="logout" color={"black"} size={30} />
+              <MaterialIcons name="person" color={"black"} size={26} />
             ),
           }}
         />

@@ -12,7 +12,7 @@ const MyProfile= ({ navigation }) => {
               <Text>john@gmail.com</Text>
             </View>
         </View>
-        <TouchableOpacity style={styles.subContainer}>
+        <TouchableOpacity style={styles.subContainer} onPress={()=> navigation.push('EditProfile')}>
             <Ionicons name="person" size={28} color="white"/>
             <View style={styles.textContainer}>
                 <Text style={styles.titleText}>My Account</Text>

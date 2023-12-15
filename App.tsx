@@ -10,6 +10,7 @@ import MyProfile from './screens/tabBars/MyProfile'
 import TabBar from './screens/tabBars/TabBar';
 import MainOnboardingScreen from './onboardingScreen/ MainOnboardingScreen';
 import SecondOnboardingScreen from './onboardingScreen/SecondOnboardingScreen';
+import PostItem from './screens/tabBars/PostItem';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,10 +25,10 @@ function App() {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="TabBar" component={TabBar}/>
         <Stack.Screen name="My Favourites" component={MyFavourites}/>
-        <Stack.Screen name="ProfilePage" component={EditProfile}/>
+        <Stack.Screen name="EditProfile" component={EditProfile}/>
         <Stack.Screen name="MyProfile" component={MyProfile}/>
+        <Stack.Screen name="PostItem" component={PostItem}/>
       </Stack.Navigator>
-      {/* <TabBar/> */}
     </NavigationContainer>
   );
 }
