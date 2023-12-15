@@ -1,8 +1,15 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { 
+  View, 
+  Image, 
+  Text, 
+  StyleSheet, 
+  TouchableOpacity 
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const MainOnboardingScreen = () => {
+const MainOnboardingScreen = ({ navigation }) => {
+
   return (
     <SafeAreaView style={styles.container}>
       <Image
@@ -10,18 +17,18 @@ const MainOnboardingScreen = () => {
         source={require("../assets/firstImage.jpeg")}
       />
 
-      <Text style={styles.text}> Budget Buy </Text>
+      <Text style={styles.appNametext}> Budget Buy </Text>
 
-      <View style={styles.secondImageContainer}>
+      <View style={styles.onboardingSecondImageContainer}>
         <Image
-          style={styles.secondImage}
+          style={styles.onboardingSecondImage}
           source={require("../assets/secondImage.jpeg")}
         />
       </View>
 
-      <Text style={styles.textTwo}> Personalized Recommendation: </Text>
+      <Text style={styles.onboardingTitleText}> PERSONALIZED RECOMMENDATION: </Text>
 
-      <Text style={styles.textThree}>
+      <Text style={styles.onboardingMessageText}>
         The more you browse and engage, the better we can tailor our
         recommendation
       </Text>
@@ -29,10 +36,10 @@ const MainOnboardingScreen = () => {
       <View style={styles.progressAndArrowView}>
         <View style={styles.progessLineContainer}>
           <View style={styles.progressLine}></View>
-          <View style={styles.progressLine}></View>
+          <View style={styles.progressLineTwo}></View>
         </View>
 
-        <TouchableOpacity style={styles.roundBorder}>
+        <TouchableOpacity style={styles.roundBorder} onPress={()=> navigation.push('SecondOnboardingScreen')}>
           <View style={styles.arrowContainer}>
             <Image
               style={styles.arrowImage}
@@ -41,6 +48,10 @@ const MainOnboardingScreen = () => {
           </View>
         </TouchableOpacity>
       </View>
+
+      <TouchableOpacity onPress={()=> navigation.push('Login')}>
+        <Text style={styles.textSkip}> Skip </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -53,39 +64,38 @@ const styles = StyleSheet.create({
   firstImage: {
     width: "100%",
     height: 180,
-    marginBottom: 30,
+    marginBottom: 10,
   },
-  text: {
-    fontSize: 37,
+  appNametext: {
+    fontSize: 35,
     fontWeight: "700",
     marginTop: 10,
     color: "#faa543",
   },
-
-  secondImageContainer: {
+  onboardingSecondImageContainer: {
     width: "100%",
     alignItems: "center",
+    paddingTop: 26,
+    paddingBottom: 26,
   },
-  secondImage: {
-    width: 300,
-    height: 300,
+  onboardingSecondImage: {
+    width: 275,
+    height: 275,
   },
-
-  textTwo: {
-    fontSize: 18,
+  onboardingTitleText: {
+    fontSize: 20,
     fontWeight: "bold",
     marginTop: 10,
     color: "#faa543",
-    paddingBottom: 10,
+    paddingBottom: 12,
   },
-
-  textThree: {
-    fontSize: 12,
+  onboardingMessageText: {
+    fontSize: 14,
     fontWeight: "400",
     color: "gray",
     paddingBottom: 15,
+    marginHorizontal: 16
   },
-
   progessLineContainer: {
     flexDirection: "row",
     marginTop: 10,
@@ -99,7 +109,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 5,
   },
-
+  progressLineTwo: {
+    width: 40,
+    height: 7,
+    backgroundColor: "gray",
+    borderRadius: 1,
+    marginHorizontal: 5,
+    borderRadius: 5,
+  },
   roundBorder: {
     width: 60,
     height: 60,
@@ -109,7 +126,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   arrowContainer: {
     width: 50,
     height: 50,
@@ -118,18 +134,24 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   arrowImage: {
     width: 30,
     height: 30,
   },
-
   progressAndArrowView: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 6
+  },
+  textSkip: {
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 10,
+    color: "blue",
+    textDecorationLine: "underline",
   },
 });
 

@@ -8,8 +8,8 @@ const MyProfile= ({ navigation }) => {
         <View style={styles.profileInfo}>
             <Image source={require("../../assets/goldIphone.png")} style={styles.avatarImage}/>
             <View>
-                <Text style={styles.userName}>Harry Potter</Text>
-                <Text>harry@gmail.com</Text>
+                <Text style={styles.userName}>John Doe</Text>
+                <Text>john@gmail.com</Text>
             </View>
         </View>
         <TouchableOpacity style={styles.subContainer}>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     padding: 20,  
     margin: 10,
     borderRadius: 10,
-    width:300,
+    width: "90%",
   },
   textContainer: {
     marginStart: 26
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   signOutButton: {
     backgroundColor: 'orange',
     padding: 12,  
-    marginTop: 20,  
+    marginTop: 26,  
     borderRadius: 30,
     paddingHorizontal: 26
   },
@@ -79,12 +79,11 @@ const styles = StyleSheet.create({
   },
   profileInfo: {
     flexDirection: 'row', 
-    width: '100%', 
-    paddingHorizontal: 60, 
+    width: '90%', 
     paddingBottom: 40 
   },
   userName: {
-    fontSize: 18, 
+    fontSize: 20, 
     fontWeight: 'bold',
     paddingBottom: 4
   },
