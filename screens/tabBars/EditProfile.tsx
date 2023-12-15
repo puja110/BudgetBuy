@@ -10,9 +10,9 @@ const EditProfileView = () => {
   const [avatar, setAvatar] = useState('https://reactjs.org/logo-og.png');
 
   useEffect(() => {
-    setName('Aprilia Honda')
-    setEmail('AH@gmail.com')
-    setphnNum('00000000')
+    setName('John Doe')
+    setEmail('john@gmail.com')
+    setphnNum('+1 456 3456435')
     setAddress('Barrie')
     setAvatar('https://reactjs.org/logo-og.png')
   }, []);

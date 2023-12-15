@@ -8,13 +8,17 @@ import MyFavourites from './screens/tabBars/MyFavourite';
 import EditProfile from './screens/tabBars/EditProfile';
 import MyProfile from './screens/tabBars/MyProfile'
 import TabBar from './screens/tabBars/TabBar';
+import MainOnboardingScreen from './onboardingScreen/ MainOnboardingScreen';
+import SecondOnboardingScreen from './onboardingScreen/SecondOnboardingScreen';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName='MainOnboardingScreen' screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MainOnboardingScreen" component={MainOnboardingScreen}/>
+        <Stack.Screen name="SecondOnboardingScreen" component={SecondOnboardingScreen}/>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
