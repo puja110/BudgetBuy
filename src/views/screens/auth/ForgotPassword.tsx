@@ -25,10 +25,6 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
-    function alert(arg0: string) {
-        throw new Error('Function not implemented.');
-    }
-
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground

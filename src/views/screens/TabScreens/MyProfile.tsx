@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'grey',
     borderWidth: 0.5,
-    padding: 10
+    padding: 10,
+    marginBottom: 20,
   },
   userName: {
     color: "orange",

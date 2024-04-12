@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
+    alignSelf: 'center'
   },
 
   messageIcon: {
