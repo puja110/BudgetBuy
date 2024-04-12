@@ -18,6 +18,7 @@ interface MyProfileProps {
 const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
 
   const handleUserLogout = async () => {
+    navigation.navigate('Login');
     // logOutUser()
     //   .then(data => {
     //     navigation.reset({

@@ -33,7 +33,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [password, setPassword] = useState('');
 
   async function handleLogin() {
-    navigation.navigate('MyProfile');
+    navigation.navigate('TabBar');
     if (email.length <= 0) {
       Alert.alert('Please enter your email');
       return;
@@ -42,6 +42,16 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
       Alert.alert('Please enter password');
       return;
     }
+
+    // await signInUser(email, password)
+    //   .then(data => {
+    //     Alert.alert("User logged in successfully!");
+    //     navigation.navigate('TabBar');
+    //   })
+    //   .catch(error => {
+    //     handleLoginError(error);
+    //     console.log(error);
+    //   });
   }
 
   const handleLoginError = (error) => {
