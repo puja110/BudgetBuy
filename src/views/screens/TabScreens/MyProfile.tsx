@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-//import { logOutUser } from '../../../services/api.service';
+import { logOutUser } from '../../../service/api.service';
 
 interface MyProfileProps {
   navigation: any;
@@ -18,18 +18,17 @@ interface MyProfileProps {
 const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
 
   const handleUserLogout = async () => {
-    navigation.navigate('Login');
-    // logOutUser()
-    //   .then(data => {
-    //     navigation.reset({
-    //       index: 0,
-    //       routes: [{name: 'Login'}],
-    //     });
-    //     Alert.alert("User signed out!")
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    logOutUser()
+      .then(data => {
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Login'}],
+        });
+        Alert.alert("User signed out!")
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   return (

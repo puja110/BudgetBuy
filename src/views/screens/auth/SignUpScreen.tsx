@@ -12,7 +12,7 @@ import {
 import { StackNavigationProp } from "@react-navigation/stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { validateEmail } from '../../../helpers';
-// import { signUpUser } from '../../../services/api.service';
+import { signUpUser } from '../../../service/api.service';
 
 export type RootStackParamList = {
   MainOnboarding: undefined;
@@ -59,17 +59,15 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
       return;
     }
 
-    navigation.goBack();
-
-    // await signUpUser(email, password)
-    //   .then(() => {
-    //     Alert.alert('User account created successfully!');
-    //     navigation.goBack();
-    //   })
-    //   .catch(error => {
-    //     handleRegisterError(error)
-    //     console.log(error);
-    //   });
+    await signUpUser(email, password)
+      .then(() => {
+        Alert.alert('User account created successfully!');
+        navigation.goBack();
+      })
+      .catch(error => {
+        handleRegisterError(error)
+        console.log(error);
+      });
 
     return;
   }

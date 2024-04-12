@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StackNavigationProp } from '@react-navigation/stack';
-//import { signInUser } from '../../../services/api.service';
+import { signInUser } from '../../../service/api.service';
 
 type RootStackParamList = {
   ForgotPassword: undefined;
@@ -33,7 +33,6 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [password, setPassword] = useState('');
 
   async function handleLogin() {
-    navigation.navigate('TabBar');
     if (email.length <= 0) {
       Alert.alert('Please enter your email');
       return;
@@ -43,18 +42,18 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
       return;
     }
 
-    // await signInUser(email, password)
-    //   .then(data => {
-    //     Alert.alert("User logged in successfully!");
-    //     navigation.navigate('TabBar');
-    //   })
-    //   .catch(error => {
-    //     handleLoginError(error);
-    //     console.log(error);
-    //   });
+    await signInUser(email, password)
+      .then(data => {
+        Alert.alert("User logged in successfully!");
+        navigation.navigate('TabBar');
+      })
+      .catch(error => {
+        handleLoginError(error);
+        console.log(error);
+      });
   }
 
-  const handleLoginError = (error) => {
+  const handleLoginError = (error: any) => {
     if (error.code === 'auth/invalid-email') {
       Alert.alert("The email address is invalid!");
     } 
