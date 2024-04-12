@@ -38,6 +38,8 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleRegister = async() => {
     if (email.length <= 0) {
@@ -59,7 +61,17 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
       return;
     }
 
-    await signUpUser(email, password)
+    if (fullName.length <= 0) {
+      Alert.alert('Please enter your full name');
+      return;
+    }
+
+    if (phoneNumber.length <= 0) {
+      Alert.alert('Please enter your phone number');
+      return;
+    }
+
+    await signUpUser(email, password, fullName, phoneNumber)
       .then(() => {
         Alert.alert('User account created successfully!');
         navigation.goBack();
@@ -95,6 +107,16 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
         <View style={styles.overlay}>
           <View style={styles.inputContainer}>
             <Text style={styles.signupText}>Sign up</Text>
+            <View style={styles.inputTextContainer}>
+            <TextInput 
+              style={styles.input} 
+              placeholder="Full Name" 
+              placeholderTextColor={'grey'}
+              value={fullName}
+              onChangeText={val => setFullName(val)}
+              />
+            </View>  
+            <View style={styles.inputTextContainer}>  
             <TextInput 
               style={styles.input} 
               placeholder="Email Address" 
@@ -102,6 +124,16 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
               value={email}
               onChangeText={val => setEmail(val)}
               />
+            </View>  
+            <View style={styles.inputTextContainer}>  
+            <TextInput 
+              style={styles.input} 
+              placeholder="Phone Number" 
+              placeholderTextColor={'grey'}
+              value={phoneNumber}
+              onChangeText={val => setPhoneNumber(val)}
+              />
+             </View>   
             <View style={styles.inputTextContainer}>
               <TextInput
                 style={styles.inputPassword}

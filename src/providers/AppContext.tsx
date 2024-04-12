@@ -4,14 +4,24 @@ import React, { createContext, useState } from 'react';
 const AuthContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const [userEmail, setUserEmail] = useState('');
+  const [userData, setUserData] = useState({
+    uid: '',
+    email: '',
+    fullName: '',
+    phoneNumber: ''
+  });
 
   const userLogout = () => {
-    setUserEmail(''); // Clear email on user logout
+    setUserData({
+      uid: '',
+      email: '',
+      fullName: '',
+      phoneNumber: ''
+    }); // Clear user data on logout
   };
 
   return (
-    <AuthContext.Provider value={{ userEmail, setUserEmail, userLogout }}>
+    <AuthContext.Provider value={{ userData, setUserData, userLogout }}>
       {children}
     </AuthContext.Provider>
   );

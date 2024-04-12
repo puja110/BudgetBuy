@@ -14,6 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { signInUser } from '../../../service/api.service';
 import AppContext from '../../../providers/AppContext'; // Import AuthContext
+import database from '@react-native-firebase/database';
 
 type RootStackParamList = {
   ForgotPassword: undefined;
@@ -29,7 +30,7 @@ interface LoginScreenProps {
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   
-  const { setUserEmail } = useContext(AppContext); // Destructure setEmail from AuthContext
+  const { setUserData } = useContext(AppContext); // Destructure setEmail from AuthContext
   const [hidePassword, setHidePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -44,18 +45,31 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
       Alert.alert('Please enter password');
       return;
     }
-
-    await signInUser(email, password)
-      .then(data => {
-        Alert.alert("User logged in successfully!");
-        navigation.navigate('TabBar');
-        setUserEmail(email)
-      })
-      .catch(error => {
-        handleLoginError(error);
-        console.log(error);
+  
+    try {
+      const userCredential = await signInUser(email, password);
+      const userId = userCredential.user.uid;
+  
+      // Retrieve additional user data from Firebase Realtime Database
+      const userDataSnapshot = await database().ref('users/' + userId).once('value');
+      const userData = userDataSnapshot.val(); // Contains the additional user data
+  
+      // Update user context with additional user data
+      setUserData({
+        uid: userId,
+        email: email,
+        fullName: userData.fullName,
+        phoneNumber: userData.phoneNumber,
       });
+  
+      Alert.alert("User logged in successfully!");
+      navigation.navigate('TabBar');
+    } catch (error) {
+      handleLoginError(error);
+      console.log(error);
+    }
   }
+  
 
   const handleLoginError = (error: any) => {
     if (error.code === 'auth/invalid-email') {

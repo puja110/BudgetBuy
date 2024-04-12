@@ -17,8 +17,8 @@ interface MyProfileProps {
 }
 
 const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
-
-  const { userEmail } = useContext(AuthContext); // Access email and logout function from context
+  const { userData } = useContext(AuthContext); 
+  // const { userEmail } = useContext(AuthContext); // Access email and logout function from context
 
   const handleUserLogout = async () => {
     logOutUser()
@@ -42,8 +42,9 @@ const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
             style={styles.avatarImage}
         />
         <View>
-          <Text style={styles.userName}>John Doe</Text>
-          <Text>{userEmail}</Text>
+          <Text style={styles.userName}>{userData.fullName}</Text>
+          <Text>{userData.email}</Text>
+          <Text>{userData.phoneNumber}</Text>
         </View>
       </View>
       <TouchableOpacity
