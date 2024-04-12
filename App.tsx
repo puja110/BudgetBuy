@@ -13,7 +13,11 @@ import SecondOnboardingScreen from './src/views/screens/SecondOnboardingScreen';
 import LoginScreen from './src/views/screens/auth/LoginScreen';
 import ForgotPassword from './src/views/screens/auth/ForgotPassword';
 import SignUpScreen from './src/views/screens/auth/SignUpScreen';
-import MyProfile from './src/views/screens/TabScreens/MyProfile';
+import TabBar from './src/views/navigation/TabBar';
+import PostItem from './src/views/screens/TabScreens/PostItem';
+import MyFavourites from './src/views/screens/TabScreens/MyFavourites'; 
+import MyProfile from './src/views/screens/TabScreens/MyProfile'; 
+import HistoryPage from './src/views/screens/TabScreens/HistoryPage'; 
 
 const Stack = createNativeStackNavigator();
 
@@ -47,11 +51,6 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="MyProfile"
-            component={MyProfile}
-            options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen
             name="TabBar"
             component={TabBar}
             options={{ headerShown: false }}
@@ -75,7 +74,7 @@ export default function App() {
             name="HistoryPage"
             component={HistoryPage}
             options={{ headerShown: false }}
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
   );
