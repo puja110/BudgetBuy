@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { signInUser } from '../../../service/api.service';
+import AppContext from '../../../providers/AppContext'; // Import AuthContext
 
 type RootStackParamList = {
   ForgotPassword: undefined;
@@ -28,9 +29,11 @@ interface LoginScreenProps {
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   
+  const { setUserEmail } = useContext(AppContext); // Destructure setEmail from AuthContext
   const [hidePassword, setHidePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
 
   async function handleLogin() {
     if (email.length <= 0) {
@@ -46,6 +49,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
       .then(data => {
         Alert.alert("User logged in successfully!");
         navigation.navigate('TabBar');
+        setUserEmail(email)
       })
       .catch(error => {
         handleLoginError(error);
