@@ -12,12 +12,13 @@ export const AppContextProvider = ({ children }) => {
   });
 
   const userLogout = () => {
+    // Clear user data on logout
     setUserData({
       uid: '',
       email: '',
       fullName: '',
       phoneNumber: ''
-    }); // Clear user data on logout
+    });
   };
 
   return (
