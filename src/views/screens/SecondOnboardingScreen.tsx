@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   onboardingFirstImage: {
     width: "100%",
-    height: 180,
+    height: "auto",
     marginBottom: 10,
   },
   appNametext: {
