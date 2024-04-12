@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from 'react';
 import {
   View,
   Text,
@@ -10,12 +10,15 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { logOutUser } from '../../../service/api.service';
+import AuthContext from '../../../providers/AppContext';
 
 interface MyProfileProps {
   navigation: any;
 }
 
 const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
+
+  const { userEmail } = useContext(AuthContext); // Access email and logout function from context
 
   const handleUserLogout = async () => {
     logOutUser()
@@ -40,7 +43,7 @@ const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
         />
         <View>
           <Text style={styles.userName}>John Doe</Text>
-          <Text>john@gmail.com</Text>
+          <Text>{userEmail}</Text>
         </View>
       </View>
       <TouchableOpacity

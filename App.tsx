@@ -18,11 +18,13 @@ import PostItem from './src/views/screens/TabScreens/PostItem';
 import MyFavourites from './src/views/screens/TabScreens/MyFavourites'; 
 import MyProfile from './src/views/screens/TabScreens/MyProfile'; 
 import HistoryPage from './src/views/screens/TabScreens/HistoryPage'; 
+import { AppContextProvider } from './src/providers/AppContext'; 
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-    return (
+  return (
+    <AppContextProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Registration">
           <Stack.Screen
@@ -75,7 +77,8 @@ export default function App() {
             component={HistoryPage}
             options={{ headerShown: false }}
           />
-        </Stack.Navigator>
-      </NavigationContainer>
+      </Stack.Navigator>
+    </NavigationContainer>
+  </AppContextProvider>
   );
 }
