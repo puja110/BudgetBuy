@@ -17,12 +17,13 @@ interface MyProfileProps {
 }
 
 const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
-  const { userData } = useContext(AuthContext); 
-  // const { userEmail } = useContext(AuthContext); // Access email and logout function from context
+  
+  const { userData, userLogout } = useContext(AuthContext); // Access user data and logout function from context
 
   const handleUserLogout = async () => {
     logOutUser()
       .then(data => {
+        userLogout()
         navigation.reset({
           index: 0,
           routes: [{name: 'Login'}],
