@@ -8,7 +8,7 @@ import {
   ImageSourcePropType,
   Alert,
 } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { Icon } from "react-native-elements";
 import { logOutUser } from '../../../service/api.service';
 import AuthContext from '../../../providers/AppContext';
 
@@ -49,29 +49,37 @@ const MyProfile: React.FC<MyProfileProps> = ({ navigation }) => {
       </View>
       <TouchableOpacity
         style={styles.subContainer}
-        // onPress={() => navigation.push("EditProfile")}
       >
-        <Ionicons name="person" size={28} color="white" />
+        <Icon
+          name='person'
+          type='ionicon'
+          size={28}
+          color={'white'}
+        />
         <View style={styles.textContainer}>
           <Text style={styles.titleText}>My Account</Text>
           <Text style={styles.subText}>Edit your details</Text>
         </View>
-        {/* <TouchableOpacity
-          style={styles.editProfile}
-          onPress={() => navigation.push("EditProfile")}
-        >
-          <Text style={styles.editProfileText}>Edit</Text>
-        </TouchableOpacity> */}
       </TouchableOpacity>
       <TouchableOpacity style={styles.subContainer}>
-        <Ionicons name="star" size={28} color="white" />
+        <Icon
+          name='star'
+          type='ionicon'
+          size={28}
+          color={'white'}
+        />
         <View style={styles.textContainer}>
           <Text style={styles.titleText}>My Orders</Text>
           <Text style={styles.subText}>View all your orders</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.subContainer}>
-        <Ionicons name="settings" size={28} color="white" />
+        <Icon
+          name='settings'
+          type='ionicon'
+          size={26}
+          color={'white'}
+        />
         <View style={styles.textContainer}>
           <Text style={styles.titleText}>Settings</Text>
           <Text style={styles.subText}>View settings</Text>
@@ -129,7 +137,7 @@ const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 10,
     borderColor: 'grey',
-    borderWidth: 0.5,
+    borderWidth: 0.7,
     padding: 10,
     marginBottom: 20,
   },

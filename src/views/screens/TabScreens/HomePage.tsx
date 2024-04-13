@@ -9,7 +9,7 @@ import {
   ImageSourcePropType,
 } from "react-native";
 
-import Icon from "react-native-vector-icons/MaterialIcons";
+import { Icon } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
 import TableCells from "../../../views/components/TableCells";
@@ -53,9 +53,6 @@ const HomePage: React.FC = () => {
             }}
           >
             <Text style={styles.HomeText}>Welcome to BudgetBuy!</Text>
-            <TouchableOpacity style={styles.mailIcon}>
-              <Icon name="message" size={20} color="black" />
-            </TouchableOpacity>
           </View>
         </View>
 
@@ -65,7 +62,12 @@ const HomePage: React.FC = () => {
               style={styles.input}
               placeholder="Search for books, guitar and more...."
             />
-            <Icon name="search" color="#b5b2ae" size={25} style={styles.icon} />
+            <Icon
+                name='search'
+                type='ionicon'
+                size={26}
+                style={styles.icon}
+              />
           </View>
         </View>
 
@@ -88,7 +90,7 @@ const HomePage: React.FC = () => {
         </View>
 
         <View>
-        <FlatList<Item> data={BudgetBuyData} renderItem={populateCells} />
+          <FlatList<Item> data={BudgetBuyData} renderItem={populateCells} />
         </View>
       </View>
      </SafeAreaView>
@@ -99,10 +101,11 @@ export default HomePage;
 
 const styles = StyleSheet.create({
   HomeText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "bold",
     marginTop: 15,
     marginBottom: 10,
+    color:'orange'
   },
   mailIcon: {
     marginTop: 26,
@@ -133,7 +136,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
-    alignSelf: 'center'
   },
 
   messageIcon: {
@@ -156,6 +158,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 380,
     justifyContent: "space-between",
+    alignItems: 'center'
   },
   input: {
     flex: 1,

@@ -5,8 +5,8 @@ import MyFavourites from '../../views/screens/TabScreens/MyFavourites';
 import PostItem from '../../views/screens/TabScreens/PostItem';
 import MyProfile from '../../views/screens/TabScreens/MyProfile';
 import HistoryPage from '../../views/screens/TabScreens/HistoryPage';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Icon } from 'react-native-elements';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +24,11 @@ function TabBar() {
           component={HomePage}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="home" color={'black'} size={26} />
+              <Icon
+                name='home'
+                type='ionicon'
+                size={24}
+              />
             ),
           }}
         />
@@ -33,7 +37,11 @@ function TabBar() {
           component={MyFavourites}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="favorite" color={'black'} size={26} />
+              <Icon
+                name='heart'
+                type='ionicon'
+                size={24}
+              />
             ),
           }}
         />
@@ -42,7 +50,11 @@ function TabBar() {
           component={PostItem}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="add" color={'black'} size={30} />
+              <Icon
+                name='add'
+                type='ionicon'
+                size={28}
+              />
             ),
           }}
         />
@@ -51,7 +63,11 @@ function TabBar() {
           component={HistoryPage}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="history" color={'black'} size={26} />
+              <Icon
+                name='star'
+                type='ionicon'
+                size={24}
+              />
             ),
           }}
         />
@@ -60,7 +76,11 @@ function TabBar() {
           component={MyProfile}
           options={{
             tabBarIcon: () => (
-              <MaterialIcons name="person" color={'black'} size={26} />
+              <Icon
+                name='person'
+                type='ionicon'
+                size={24}
+              />
             ),
           }}
         />

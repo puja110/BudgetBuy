@@ -9,7 +9,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type RootStackParamList = {
   Login: undefined;
@@ -22,8 +21,6 @@ interface ForgotPasswordProps {
 }
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ navigation }) => {
-  const [hidePassword, setHidePassword] = useState(true);
-  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,38 +35,25 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ navigation }) => {
             <View style={styles.inputTextContainer}>
               <TextInput
                 style={styles.input}
-                secureTextEntry={hidePassword}
+                secureTextEntry={true}
                 placeholder="Password"
                 placeholderTextColor="gray"
                 autoCorrect={false}
               />
-              <TouchableOpacity
-                style={styles.passwordIcon}
-                onPress={() => setHidePassword(!hidePassword)}
-              >
-                <Ionicons name={hidePassword ? 'eye' : 'eye-off'} size={24} color="gray" />
-              </TouchableOpacity>
             </View>
             <Text style={styles.forgotPassworInputTextTitle}>Confirm new password</Text>
             <View style={styles.inputTextContainer}>
               <TextInput
                 style={styles.input}
-                secureTextEntry={hideConfirmPassword}
+                secureTextEntry={true}
                 placeholder="Confirm password"
                 placeholderTextColor="gray"
                 autoCorrect={false}
               />
-              <TouchableOpacity
-                style={styles.passwordIcon}
-                onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
-              >
-                <Ionicons name={hideConfirmPassword ? 'eye' : 'eye-off'} size={24} color="gray" />
-              </TouchableOpacity>
             </View>
             <TouchableOpacity
               style={styles.forgotPasswordButton}
               onPress={() => {
-                alert('Reset password successfully!');
                 navigation.push('Login');
               }}
             >

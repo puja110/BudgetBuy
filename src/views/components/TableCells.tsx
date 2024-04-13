@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ImageSourcePropType } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Icon } from 'react-native-elements';
 
 interface TableCellsProps {
   profilePicture: ImageSourcePropType;
@@ -31,11 +31,12 @@ const TableCells: React.FC<TableCellsProps> = ({
         </View>
 
         <TouchableOpacity style={styles.favoriteButton}>
-          <Icon name="favorite" size={20} color="red" />
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Icon name="more-vert" size={30} color="gray" />
+          <Icon
+            name='heart'
+            color={'red'}
+            type='ionicon'
+            size={26}
+          />
         </TouchableOpacity>
       </View>
 

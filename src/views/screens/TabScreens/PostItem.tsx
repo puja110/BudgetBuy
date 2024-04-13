@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Icon from "react-native-vector-icons/MaterialIcons";
+import { Icon } from "react-native-elements";
 
 const PostItem: React.FC = () => {
 
@@ -61,7 +61,11 @@ const PostItem: React.FC = () => {
        <View style={styles.uploadImageContainer}>
             <Text style={styles.uploadImageTitle}>Choose Picture</Text>
             <TouchableOpacity style={styles.uploadImage}>
-                <Icon name="add" size={40} color="grey" style={{ alignSelf: 'center' }}/>
+                <Icon
+                  name='add'
+                  type='ionicon'
+                  size={26}
+              />
             </TouchableOpacity>
       </View>
 

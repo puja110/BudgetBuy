@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { Icon } from "react-native-elements";
 
 export default function MyFavourites({}) {
   return (
@@ -27,7 +27,12 @@ export default function MyFavourites({}) {
             <Text style={{ fontSize: 14, color: "#17858f" }}>CAD $19.00</Text>
           </View>
           <View style={{ position: "absolute", right: 10, bottom: 12 }}>
-            <Ionicons name="heart" size={28} color="red" />
+            <Icon
+                name='heart'
+                type='ionicon'
+                size={26}
+                color={'red'}
+              />
           </View>
         </View>
         <View style={styles.box}>
@@ -47,7 +52,12 @@ export default function MyFavourites({}) {
             <Text style={{ fontSize: 14, color: "#17858f" }}>CAD $350.00</Text>
           </View>
           <View style={{ position: "absolute", right: 10, bottom: 12 }}>
-            <Ionicons name="heart" size={28} color="red" />
+            <Icon
+                name='heart'
+                type='ionicon'
+                size={26}
+                color={'red'}
+              />
           </View>
         </View>
         <View style={styles.box}>
@@ -67,7 +77,12 @@ export default function MyFavourites({}) {
             <Text style={{ fontSize: 14, color: "#17858f" }}>CAD $9.00</Text>
           </View>
           <View style={{ position: "absolute", right: 10, bottom: 12 }}>
-            <Ionicons name="heart" size={28} color="red" />
+            <Icon
+              name='heart'
+              type='ionicon'
+              size={26}
+              color={'red'}
+            />
           </View>
         </View>
         <View style={styles.box}>
@@ -85,7 +100,12 @@ export default function MyFavourites({}) {
             <Text style={{ fontSize: 14, color: "#17858f" }}>CAD $90.00</Text>
           </View>
           <View style={{ position: "absolute", right: 10, bottom: 12 }}>
-            <Ionicons name="heart" size={28} color="red" />
+            <Icon
+              name='heart'
+              type='ionicon'
+              size={26}
+              color={'red'}
+            />
           </View>
         </View>
         <View style={styles.box}>
@@ -105,7 +125,12 @@ export default function MyFavourites({}) {
             <Text style={{ fontSize: 14, color: "#17858f" }}>CAD $12.00</Text>
           </View>
           <View style={{ position: "absolute", right: 10, bottom: 12 }}>
-            <Ionicons name="heart" size={28} color="red" />
+            <Icon
+                name='heart'
+                type='ionicon'
+                size={26}
+                color={'red'}
+              />
           </View>
         </View>
       </ScrollView>
