@@ -1,9 +1,10 @@
 import React, { createContext, useState } from 'react';
 
-// Create context
-const AuthContext = createContext();
+// Create a new context 
+const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
+  // Initialize the user data state with empty values
   const [userData, setUserData] = useState({
     uid: '',
     email: '',
@@ -12,7 +13,7 @@ export const AppContextProvider = ({ children }) => {
   });
 
   const userLogout = () => {
-    // Clear user data on logout
+    // resetting the user data state
     setUserData({
       uid: '',
       email: '',
@@ -22,10 +23,10 @@ export const AppContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ userData, setUserData, userLogout }}>
+    <AppContext.Provider value={{ userData, setUserData, userLogout }}>
       {children}
-    </AuthContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export default AuthContext;
+export default AppContext;
