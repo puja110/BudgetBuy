@@ -10,7 +10,6 @@ import {
   SafeAreaView,
   Alert,
 } from "react-native";
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { signInUser } from '../../../service/api.service';
 import AppContext from '../../../providers/AppContext'; // Import AuthContext
@@ -31,7 +30,6 @@ interface LoginScreenProps {
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   
   const { setUserData } = useContext(AppContext); // Destructure setEmail from AuthContext
-  const [hidePassword, setHidePassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -111,19 +109,10 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 style={styles.input}
                 placeholder="Password"
                 placeholderTextColor={'grey'}
-                secureTextEntry={hidePassword}
+                secureTextEntry={true}
                 value={password}
                 onChangeText={val => setPassword(val)}
               />
-              <TouchableOpacity
-                style={styles.passwordIcon}
-                onPress={() => setHidePassword(!hidePassword)}>
-                <Ionicons
-                  size={24}
-                  color='gray'
-                  name={hidePassword ? 'eye' : 'eye-off'}
-                />
-              </TouchableOpacity>
             </View>
 
             <View style={styles.forgotPasswordContainer}>

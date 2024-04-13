@@ -10,7 +10,6 @@ import {
   Alert,
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { validateEmail } from '../../../helpers';
 import { signUpUser } from '../../../service/api.service';
 
@@ -33,8 +32,6 @@ interface SignUpScreenProps {
 
 const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
   
-  const [hidePassword, setHidePassword] = useState(true);    
-  const [hideConfirmPassword, setHideConfirmPassword] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -139,16 +136,10 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
                 style={styles.inputPassword}
                 placeholder="Password"
                 placeholderTextColor={'grey'}
-                secureTextEntry={hidePassword}
+                secureTextEntry={true}
                 value={password}
                 onChangeText={val => setPassword(val)}
               />
-              <TouchableOpacity
-                style={styles.passwordIcon}
-                onPress={() => setHidePassword(!hidePassword)}
-              >
-                <Ionicons name={hidePassword ? "eye" : "eye-off"} size={24} color="gray" />
-              </TouchableOpacity>
             </View>
 
             <View style={styles.inputTextContainer}>
@@ -156,16 +147,10 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
                 style={styles.inputPassword}
                 placeholder="Confirm Password"
                 placeholderTextColor={'grey'}
-                secureTextEntry={hideConfirmPassword}
+                secureTextEntry={true}
                 value={confirmPassword}
                 onChangeText={val => setConfirmPassword(val)}
               />
-              <TouchableOpacity
-                style={styles.passwordIcon}
-                onPress={() => setHideConfirmPassword(!hideConfirmPassword)}
-              >
-                <Ionicons name={hideConfirmPassword ? "eye" : "eye-off"} size={24} color="gray" />
-              </TouchableOpacity>
             </View>
 
             <TouchableOpacity
