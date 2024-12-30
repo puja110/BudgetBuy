@@ -1,16 +1,13 @@
 import React from 'react';
-import {StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground, View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import WABG from '../../../assets/w_bg.png';
 import BudgetBotHeader from '../../components/header/ChatHeader';
 import {useSelector} from 'react-redux';
 import {selectCurrentChatId} from '../../../redux/reducers/chatSlice';
+import SendButton from '../../components/button/SendButton';
 
-type RootStackParamList = {
-  ForgotPassword: undefined;
-  SignUp: undefined;
-  TabBar: undefined;
-};
+type RootStackParamList = {};
 
 type MetaAINavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -27,6 +24,9 @@ export default function MetaAI({navigation}: MetaAIProps) {
   return (
     <ImageBackground source={WABG} style={styles.container} resizeMode="cover">
       <BudgetBotHeader />
+      <View style={styles.contentContainer}>
+        <SendButton />
+      </View>
     </ImageBackground>
   );
 }
@@ -34,5 +34,9 @@ export default function MetaAI({navigation}: MetaAIProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
   },
 });
