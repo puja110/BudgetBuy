@@ -1,19 +1,42 @@
 import React from 'react';
 import {
-  Text,
   StyleSheet,
   View,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from 'react-native';
+import {RFValue} from 'react-native-responsive-fontsize';
+import Icon from 'react-native-vector-icons/Octicons';
+import IconI from 'react-native-vector-icons/MaterialCommunityIcons';
+import MetaAILogo from '../../../assets/logo_s.jpeg';
+import CustomText from '../text/CustomText';
 
-const BudgetBotHeader = () => {
+const BudgetBotHeader: React.FC = () => {
+  const menuBarIcon = (
+    <Icon name="three-bars" size={RFValue(20)} color="white" />
+  );
+
+  const checkBadgeIcon = (
+    <IconI name="star-check-outline" size={RFValue(16)} color="#27d366" />
+  );
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.subContainer}>
+          <TouchableOpacity>{menuBarIcon}</TouchableOpacity>
+
+          <View style={styles.flexRow}>
+            <Image source={MetaAILogo} style={styles.logo} />
+            <CustomText fontWeight="bold">MetaBot {checkBadgeIcon}</CustomText>
+            <CustomText fontWeight="500" opacity={0.7} size={12}>
+              with Llama 3
+            </CustomText>
+          </View>
+
           <TouchableOpacity>
-            <Text>BudgetBot</Text>
+            <CustomText size={14}>Clear</CustomText>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -32,6 +55,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
+    gap: 10,
+  },
+  logo: {
+    width: 38,
+    height: 38,
+    borderRadius: 40,
+  },
+  flexRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: 10,
   },
 });

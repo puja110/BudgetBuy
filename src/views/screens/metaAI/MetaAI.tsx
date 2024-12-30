@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import WABG from '../../../assets/w_bg.png';
 import BudgetBotHeader from '../../components/header/ChatHeader';

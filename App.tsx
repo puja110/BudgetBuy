@@ -29,6 +29,11 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Registration">
           <Stack.Screen
+            name="MetaAI"
+            component={MetaAI}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
             name="MainOnboarding"
             component={MainOnboardingScreen}
             options={{headerShown: false}}
@@ -76,11 +81,6 @@ export default function App() {
           <Stack.Screen
             name="HistoryPage"
             component={HistoryPage}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="MetaAI"
-            component={MetaAI}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
