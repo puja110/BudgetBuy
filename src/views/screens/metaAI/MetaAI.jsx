@@ -21,7 +21,7 @@ const MetaAI = () => {
     dispatch(changeCurrentChatId({chatId: id}));
   };
 
-  console.log('chats:: ', chats);
+  console.log('chats:: ', JSON.stringify(chats));
 
   return (
     <ImageBackground source={WABG} style={styles.container} resizeMode="cover">

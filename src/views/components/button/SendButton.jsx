@@ -52,12 +52,11 @@ const SendButton = ({
       addMessage({
         chatId: selectedChatId,
         message: {
-          content: {
-            time: new Date().toString,
-            role: 'user',
-            id: length + 1,
-            isMessageRead: false,
-          },
+          content: message,
+          time: new Date().toISOString(),
+          role: 'user',
+          id: length + 1,
+          isMessageRead: false,
         },
       }),
     );

@@ -11,8 +11,12 @@ import Icon from 'react-native-vector-icons/Octicons';
 import IconI from 'react-native-vector-icons/MaterialCommunityIcons';
 import MetaAILogo from '../../../assets/logo_s.jpeg';
 import CustomText from '../text/CustomText';
+import {useDispatch} from 'react-redux';
+import {clearAllChats} from '../../../redux/reducers/chatSlice';
 
 const BudgetBotHeader: React.FC = () => {
+  const dispatch = useDispatch();
+
   const menuBarIcon = (
     <Icon name="three-bars" size={RFValue(20)} color="white" />
   );
@@ -35,7 +39,10 @@ const BudgetBotHeader: React.FC = () => {
             </CustomText>
           </View>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(clearAllChats());
+            }}>
             <CustomText size={14}>Clear</CustomText>
           </TouchableOpacity>
         </View>
