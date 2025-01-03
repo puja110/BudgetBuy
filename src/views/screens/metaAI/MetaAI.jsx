@@ -9,6 +9,7 @@ import {
   selectCurrentChatId,
 } from '../../../redux/reducers/chatSlice';
 import SendButton from '../../components/button/SendButton';
+import Chat from '../../components/chat/Chat';
 
 const MetaAI = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,16 @@ const MetaAI = () => {
     dispatch(changeCurrentChatId({chatId: id}));
   };
 
-  console.log('chats:: ', JSON.stringify(chats));
-
   return (
     <ImageBackground source={WABG} style={styles.container} resizeMode="cover">
       <BudgetBotHeader />
+
+      <Chat
+        isTyping={isTyping}
+        heightOfMessageBox={heightOfMessageBox}
+        messages={chats?.find(chat => chat.id == currentChatId)?.messages || []}
+      />
+
       <View style={styles.contentContainer}>
         <SendButton
           isTyping={isTyping}
