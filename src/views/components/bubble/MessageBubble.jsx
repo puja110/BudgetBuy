@@ -1,6 +1,8 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import {RFValue} from 'react-native-responsive-fontsize';
+import TickIcon from '../../../assets/tick.png';
+import dayjs from 'dayjs';
 
 const MessageBubble = ({message}) => {
   const isMyMessage = message.role == 'user';
@@ -34,7 +36,20 @@ const MessageBubble = ({message}) => {
         />
       )}
 
-      <View style={{...styles.timeAndReadContainer, right: 0}}></View>
+      <View style={{...styles.timeAndReadContainer, right: 0}}>
+        <Text style={styles.timeText}>
+          {dayjs(message.time).format('HH:mm A')}
+        </Text>
+        {isMyMessage && (
+          <View>
+            <Image
+              source={TickIcon}
+              tintColor={isMessageRead ? '#53a6fd' : '#8aa69b'}
+              style={{width: 15, height: 15}}
+            />
+          </View>
+        )}
+      </View>
     </View>
   );
 };
