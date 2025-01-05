@@ -57,6 +57,8 @@ const SendButton = ({
           role: 'user',
           id: length + 1,
           isMessageRead: false,
+          // isLoading: true,
+          imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
         },
       }),
     );

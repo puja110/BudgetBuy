@@ -1,8 +1,10 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
-import {RFValue} from 'react-native-responsive-fontsize';
+import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 import TickIcon from '../../../assets/tick.png';
 import dayjs from 'dayjs';
+import MarkdownDisplay from 'react-native-markdown-display';
+import LoadingDots from '../loading/LoadingDots';
 
 const MessageBubble = ({message}) => {
   const isMyMessage = message.role == 'user';
@@ -20,12 +22,55 @@ const MessageBubble = ({message}) => {
       {!isMyMessage && (
         <View
           style={{
+            ...styles.leftMessageArrow,
             display: isMyMessage ? 'none' : 'flex',
           }}
         />
       )}
 
-      <Text style={{...styles.messageText}}>{message.content}</Text>
+      {message?.isLoading ? (
+        <LoadingDots />
+      ) : message?.imageUri ? (
+        <Image source={{uri: message?.imageUri}} style={styles.image} />
+      ) : (
+        <MarkdownDisplay
+          style={{
+            body: {
+              ...styles.messageText,
+              left: isMyMessage ? 10 : 0,
+              marginVertical: 0,
+              paddingVertical: 0,
+            },
+            link: {
+              color: 'lightblue',
+            },
+            blockquote: {
+              color: 'white',
+              backgroundColor: '#1d211e',
+              borderRadius: 4,
+              borderLeftWidth: 0,
+            },
+            table: {
+              borderColor: 'white',
+            },
+            code_inline: {
+              backgroundColor: '#1d211e',
+              color: 'white',
+              borderRadius: 5,
+              fence: {
+                backgroundColor: '#1d211e',
+                color: 'white',
+                borderRadius: 5,
+                borderWidth: 0,
+              },
+              tr: {
+                borderColor: 'white',
+              },
+            },
+          }}>
+          {message.content}
+        </MarkdownDisplay>
+      )}
 
       {isMyMessage && (
         <View
@@ -89,11 +134,12 @@ const styles = StyleSheet.create({
     height: 0,
     position: 'absolute',
     width: 0,
-    borderBlockColor: 'transparent',
+    borderRightWidth: 10,
+    borderRightColor: 'transparent',
     borderTopColor: '#154d37',
     borderTopWidth: 10,
     alignSelf: 'flex-start',
-    right: 0,
+    right: -8,
     top: 0,
   },
   timeAndReadContainer: {
@@ -108,6 +154,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     color: '#8aa69b',
+  },
+  image: {
+    height: RFPercentage(20),
+    width: RFPercentage(35),
+    resizeMode: 'cover',
+    left: -5,
+    aspectRatio: 4 / 4,
+    borderRadius: 20,
   },
 });
 
