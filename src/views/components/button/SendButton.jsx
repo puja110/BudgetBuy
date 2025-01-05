@@ -57,6 +57,8 @@ const SendButton = ({
           role: 'user',
           id: length + 1,
           isMessageRead: false,
+          // isLoading: true,
+          imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
         },
       }),
     );
@@ -115,7 +117,10 @@ const SendButton = ({
                 const chatIndex = chats.findIndex(
                   chat => chat.id == currentChatId,
                 );
-                if (chatIndex === -1) {
+                if (chatIndex !== -1) {
+                  // OR if(currentChatId) {
+                  await addChat(currentChatId); // Add the new message to the current chat
+                } else {
                   let newId = uuid.v4();
                   setCurrentChatId(newId);
                   await dispatch(
