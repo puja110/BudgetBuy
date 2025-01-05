@@ -4,6 +4,7 @@ import useKeyboardOffsetHeight from '../../../helpers/useKeyboardOffsetHeight';
 import getMessageHeightOffset from '../../../helpers/getMessageHeightOffset';
 import {FlashList} from '@shopify/flash-list';
 import MessageBubble from '../bubble/MessageBubble';
+import EmptyComponent from '../empty/EmptyComponent';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -27,7 +28,7 @@ const Chat = ({isTyping, messages, heightOfMessageBox}) => {
         height: calculatedHeight,
       }}>
       {messages?.length == 0 ? (
-        <Text>Empty</Text>
+        <EmptyComponent isTyping={isTyping} />
       ) : (
         <FlashList
           indicatorStyle="black"
