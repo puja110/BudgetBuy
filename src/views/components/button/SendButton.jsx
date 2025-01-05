@@ -54,7 +54,7 @@ const SendButton = ({
         message: {
           content: message,
           time: new Date().toISOString(),
-          role: 'assistant',
+          role: 'user',
           id: length + 1,
           isMessageRead: false,
           isLoading: false,

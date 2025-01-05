@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -12,7 +12,8 @@ import IconI from 'react-native-vector-icons/MaterialCommunityIcons';
 import MetaAILogo from '../../../assets/logo_s.jpeg';
 import CustomText from '../text/CustomText';
 import {useDispatch} from 'react-redux';
-import {clearAllChats, clearChat} from '../../../redux/reducers/chatSlice';
+import {clearChat} from '../../../redux/reducers/chatSlice';
+import SideDrawer from '../drawer/SideDrawer';
 
 const BudgetBotHeader = ({currentChatId, chats, setCurrentChatId}) => {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const BudgetBotHeader = ({currentChatId, chats, setCurrentChatId}) => {
   const onClearChats = async () => {
     dispatch(clearChat({chatId: currentChatId}));
   };
+
+  const [visible, setVisible] = useState(false);
 
   const menuBarIcon = (
     <Icon name="three-bars" size={RFValue(20)} color="white" />
@@ -33,7 +36,9 @@ const BudgetBotHeader = ({currentChatId, chats, setCurrentChatId}) => {
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.subContainer}>
-          <TouchableOpacity>{menuBarIcon}</TouchableOpacity>
+          <TouchableOpacity onPress={() => setVisible(true)}>
+            {menuBarIcon}
+          </TouchableOpacity>
 
           <View style={styles.flexRow}>
             <Image source={MetaAILogo} style={styles.logo} />
@@ -48,6 +53,15 @@ const BudgetBotHeader = ({currentChatId, chats, setCurrentChatId}) => {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+      {visible && (
+        <SideDrawer
+          setCurrentChatId={id => setCurrentChatId(id)}
+          chats={chats}
+          onPressHide={() => setVisible(false)}
+          visible={visible}
+          currentChatId={currentChatId}
+        />
+      )}
     </View>
   );
 };

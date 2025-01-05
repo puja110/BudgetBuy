@@ -33,7 +33,9 @@ const CustomText: React.FC<CustomTextProps> = ({
   ...props
 }) => {
   return (
-    <Text style={{fontSize: size, color, opacity, fontWeight}} {...props}>
+    <Text
+      style={{fontSize: size, color, opacity, fontWeight, ...style}}
+      {...props}>
       {children}
     </Text>
   );
