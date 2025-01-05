@@ -54,11 +54,11 @@ const SendButton = ({
         message: {
           content: message,
           time: new Date().toISOString(),
-          role: 'user',
+          role: 'assistant',
           id: length + 1,
           isMessageRead: false,
-          // isLoading: true,
-          imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
+          isLoading: false,
+          // imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
         },
       }),
     );

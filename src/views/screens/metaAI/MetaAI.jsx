@@ -24,7 +24,11 @@ const MetaAI = () => {
 
   return (
     <ImageBackground source={WABG} style={styles.container} resizeMode="cover">
-      <BudgetBotHeader />
+      <BudgetBotHeader
+        chats={chats}
+        currentChatId={currentChatId}
+        setCurrentChatId={id => setCurrentChatId(id)}
+      />
 
       <Chat
         isTyping={isTyping}
