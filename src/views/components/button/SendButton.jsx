@@ -16,6 +16,7 @@ import {
   createNewChat,
   selectChats,
   selectCurrentChatId,
+  updateChatSummary,
 } from '../../../redux/reducers/chatSlice';
 import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
@@ -34,7 +35,7 @@ const SendButton = ({
   const chats = useSelector(selectChats);
   const currentChatId = useSelector(selectCurrentChatId);
   const animationValue = useRef(new Animated.Value(0)).current;
-
+  const TextInputRef = useRef(null);
   const [message, setMessage] = useState('');
   const keyboardOffsetHeight = useKeyboardOffsetHeight();
   const handleTextChange = text => {
@@ -48,6 +49,16 @@ const SendButton = ({
 
   const addChat = async newId => {
     let selectedChatId = newId ? newId : currentChatId;
+
+    if (length == 0 && message.trim().length > 0) {
+      await dispatch(
+        updateChatSummary({
+          chatId: selectedChatId,
+          summary: message?.trim().slice(0, 40),
+        }),
+      );
+    }
+
     await dispatch(
       addMessage({
         chatId: selectedChatId,
@@ -57,11 +68,15 @@ const SendButton = ({
           role: 'user',
           id: length + 1,
           isMessageRead: false,
-          // isLoading: true,
-          imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
+          isLoading: false,
+          // imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
         },
       }),
     );
+
+    setMessage('');
+    TextInputRef.current.blur();
+    setIsPlaying(false);
   };
 
   useEffect(() => {
@@ -102,7 +117,9 @@ const SendButton = ({
           style={[styles.inputContainer, {width: isTyping ? '87%' : '100%'}]}>
           <TextInput
             editable
+            ref={TextInputRef}
             multiline
+            value={message}
             style={styles.textInput}
             placeholder="Message"
             onChangeText={handleTextChange}
