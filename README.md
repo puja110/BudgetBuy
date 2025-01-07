@@ -1,6 +1,6 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-BudgetBuy is more than just a shopping app—it's a dedication to enabling everyone to purchase sustainably and affordably. By closing the gap between buyers and sellers the app aims to enhance the shopping experience and consider the environment more carefully while purchasing secondhand items.
+BudgetBuy is a shopping app which enables everyone to purchase sustainably and affordably. By closing the gap between buyers and sellers the app aims to enhance the shopping experience and consider the environment more carefully while purchasing secondhand items. It also has a chatbot with Llama model. And working on integrating recommendation system for secondhand items
 
 # Getting Started
 
