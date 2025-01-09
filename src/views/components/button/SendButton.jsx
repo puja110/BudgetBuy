@@ -14,6 +14,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   addMessage,
   createNewChat,
+  markMessageAsRead,
   selectChats,
   selectCurrentChatId,
   updateChatSummary,
@@ -47,8 +48,21 @@ const SendButton = ({
     setHeightOfMessageBox(event.nativeEvent.contentSize.height);
   };
 
+  const fetchResponse = async (mes, selectedChatId) => {};
+  const generateImage = async (mes, selectedChatId) => {};
+
+  const identifyImageApi = prompt => {
+    const imageRegex = /\b(generate\s*image|imagine)\b/i;
+    if (imageRegex.test(prompt)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const addChat = async newId => {
     let selectedChatId = newId ? newId : currentChatId;
+    let messageId = length + 1;
 
     if (length == 0 && message.trim().length > 0) {
       await dispatch(
@@ -66,7 +80,7 @@ const SendButton = ({
           content: message,
           time: new Date().toISOString(),
           role: 'user',
-          id: length + 1,
+          id: messageId,
           isMessageRead: false,
           isLoading: false,
           // imageUri: 'https://www.gstatic.com/webp/gallery/1.jpg',
@@ -75,8 +89,30 @@ const SendButton = ({
     );
 
     setMessage('');
+    // Comment if you don't want keybard dismiss
     TextInputRef.current.blur();
     setIsPlaying(false);
+
+    let promptForAssistant = {
+      content: message,
+      time: new Date().toString(),
+      role: 'user',
+      id: messageId,
+      isMessageRead: false,
+    };
+
+    if (!identifyImageApi(message)) {
+      fetchResponse(promptForAssistant, selectedChatId);
+    } else {
+      generateImage(promptForAssistant, selectedChatId);
+    }
+
+    dispatch(
+      markMessageAsRead({
+        chatId: selectedChatId,
+        messageId: messageId,
+      }),
+    );
   };
 
   useEffect(() => {

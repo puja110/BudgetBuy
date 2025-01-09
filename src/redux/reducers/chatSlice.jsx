@@ -37,6 +37,16 @@ export const chatSlice = createSlice({
         }
       }
     },
+    markMessageAsRead: (state, action) => {
+      const {chatId, messageId} = action.payload;
+      const chat = state.chats.find(chat => chat.id === chatId);
+      if (chat) {
+        const message = chat.message.find(msg => msg.id === messageId);
+        if (message) {
+          message.isMessageRead = true;
+        }
+      }
+    },
     deleteChat: (state, action) => {
       state.chats = state.chats.filter(
         chat => chat.id !== action.payload.chatId,
@@ -59,6 +69,7 @@ export const {
   changeCurrentChatId,
   createNewChat,
   updateChatSummary,
+  markMessageAsRead,
   deleteChat,
   clearChat,
 } = chatSlice.actions;
