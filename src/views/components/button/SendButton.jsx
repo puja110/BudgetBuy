@@ -12,15 +12,18 @@ import {RFValue} from 'react-native-responsive-fontsize';
 import useKeyboardOffsetHeight from '../../../helpers/useKeyboardOffsetHeight';
 import {useDispatch, useSelector} from 'react-redux';
 import {
+  addAssistantMessage,
   addMessage,
   createNewChat,
   markMessageAsRead,
   selectChats,
   selectCurrentChatId,
+  updateAssistantMessage,
   updateChatSummary,
 } from '../../../redux/reducers/chatSlice';
 import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
+import {HUGGING_API_KEY, HUGGING_API_URL} from '../../../redux/API';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -48,7 +51,54 @@ const SendButton = ({
     setHeightOfMessageBox(event.nativeEvent.contentSize.height);
   };
 
-  const fetchResponse = async (mes, selectedChatId) => {};
+  const fetchResponse = async (mes, selectedChatId) => {
+    console.log('mes: ', mes.content);
+    let id = length + 2;
+    dispatch(
+      addAssistantMessage({
+        chatId: selectedChatId,
+        message: {
+          content: 'Loading...',
+          time: mes.time,
+          role: 'assistant',
+          id: id,
+        },
+      }),
+    );
+
+    try {
+      const response = await fetch(HUGGING_API_URL, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${HUGGING_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          inputs: mes.content,
+          messages: [...messages, mes],
+        }),
+      });
+
+      const data = await response.json();
+
+      dispatch(
+        updateAssistantMessage({
+          chatId: selectedChatId,
+          message: {
+            isLoading: false,
+            content: data[0].generated_text || 'Opps! Something went wrong.',
+            time: new Date().toString(),
+            role: 'assistant',
+            id: id,
+          },
+          messageId: id,
+        }),
+      );
+    } catch (error) {
+      console.error('Error fetching model response:', error);
+    }
+  };
+
   const generateImage = async (mes, selectedChatId) => {};
 
   const identifyImageApi = prompt => {
@@ -91,7 +141,7 @@ const SendButton = ({
     setMessage('');
     // Comment if you don't want keybard dismiss
     TextInputRef.current.blur();
-    setIsPlaying(false);
+    setIsTyping(false);
 
     let promptForAssistant = {
       content: message,
