@@ -9,6 +9,8 @@ import LoadingDots from '../loading/LoadingDots';
 const MessageBubble = ({message}) => {
   const isMyMessage = message.role == 'user';
   const isMessageRead = message?.isMessageRead;
+
+  console.log('isLoading MessageBubble: ', message?.isLoading);
   return (
     <View
       style={{
@@ -30,9 +32,10 @@ const MessageBubble = ({message}) => {
 
       {message?.isLoading ? (
         <LoadingDots />
-      ) : message?.imageUri ? (
-        <Image source={{uri: message?.imageUri}} style={styles.image} />
       ) : (
+        // message?.imageUri ? (
+        //   <Image source={{uri: message?.imageUri}} style={styles.image} />
+        // ) :
         <MarkdownDisplay
           style={{
             body: {

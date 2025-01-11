@@ -24,6 +24,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import uuid from 'react-native-uuid';
 import {HUGGING_API_KEY, HUGGING_API_URL} from '../../../redux/API';
+import EventSource from 'react-native-sse';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -52,7 +53,7 @@ const SendButton = ({
   };
 
   const fetchResponse = async (mes, selectedChatId) => {
-    console.log('mes: ', mes.content);
+    console.log('input message: ', mes.content);
     let id = length + 2;
     dispatch(
       addAssistantMessage({
@@ -66,27 +67,59 @@ const SendButton = ({
       }),
     );
 
-    try {
-      const response = await fetch(HUGGING_API_URL, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${HUGGING_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          inputs: mes.content,
-          messages: [...messages, mes],
-        }),
-      });
+    const eventSource = new EventSource(HUGGING_API_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${HUGGING_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      pollingInterval: 0,
+      body: JSON.stringify({
+        model: 'meta-llama/Meta-Llama-3-8B-Instruct',
+        messages: [...messages, mes],
+        max_tokens: 500,
+        stream: true,
+      }),
+    });
 
-      const data = await response.json();
+    let content = '';
+    let responseComplete = false;
+    eventSource.addEventListener('message', event => {
+      console.log('event data: ', event);
+      if (event.data !== '[DONE]') {
+        const parsedData = JSON.parse(event.data);
+        if (parsedData.choices && parsedData.choices.length > 0) {
+          const delta = parsedData.choices[0].delta.content;
 
+          if (delta) {
+            content += delta;
+            dispatch(
+              updateAssistantMessage({
+                chatId: selectedChatId,
+                message: {
+                  content,
+                  time: new Date().toString(),
+                  role: 'assistant',
+                  id: id,
+                },
+                messageId: id,
+              }),
+            );
+          }
+        }
+      } else {
+        responseComplete = true;
+        eventSource.close();
+      }
+    });
+
+    eventSource.addEventListener('error', error => {
+      console.log('error llama', error);
       dispatch(
         updateAssistantMessage({
           chatId: selectedChatId,
           message: {
-            isLoading: false,
-            content: data[0].generated_text || 'Opps! Something went wrong.',
+            content: 'Oops! Something went wrong.',
             time: new Date().toString(),
             role: 'assistant',
             id: id,
@@ -94,9 +127,69 @@ const SendButton = ({
           messageId: id,
         }),
       );
-    } catch (error) {
-      console.error('Error fetching model response:', error);
-    }
+      eventSource.close();
+    });
+
+    eventSource.addEventListener('close', () => {
+      if (!responseComplete) {
+        eventSource.close();
+      }
+    });
+
+    return () => {
+      eventSource.removeAllEventListeners();
+      eventSource.close();
+    };
+
+    // try {
+    //   const response = await fetch(HUGGING_API_URL, {
+    //     method: 'POST',
+    //     headers: {
+    //       Authorization: `Bearer ${HUGGING_API_KEY}`,
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       inputs: mes.content,
+    //       messages: [...messages, mes],
+    //     }),
+    //   });
+
+    //   const data = await response.json();
+
+    //   let responseText = 'Oops! Something went wrong.';
+    //   if (data && Array.isArray(data) && data[0] && data[0].generated_text) {
+    //     responseText = data[0].generated_text;
+    //   } else if (data && data.generated_text) {
+    //     responseText = data.generated_text;
+    //   }
+
+    //   dispatch(
+    //     updateAssistantMessage({
+    //       chatId: selectedChatId,
+    //       message: {
+    //         content: data[0].generated_text || 'Opps! Something went wrong.',
+    //         time: new Date().toString(),
+    //         role: 'assistant',
+    //         id: id,
+    //       },
+    //       messageId: id,
+    //     }),
+    //   );
+    // } catch (error) {
+    //   // console.error('Error fetching model response:', error);
+    //   dispatch(
+    //     updateAssistantMessage({
+    //       chatId: selectedChatId,
+    //       message: {
+    //         content: 'Oops! Something went wrong while fetching the response.',
+    //         time: new Date().toString(),
+    //         role: 'assistant',
+    //         id: id,
+    //       },
+    //       messageId: id,
+    //     }),
+    //   );
+    // }
   };
 
   const generateImage = async (mes, selectedChatId) => {};
